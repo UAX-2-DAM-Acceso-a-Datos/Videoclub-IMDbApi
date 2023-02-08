@@ -6,8 +6,6 @@
 Creación de una web de reserva de peliculas/series mostrando información de la Api de IMDB (https://imdb-api.com/)
 
 
-![image](https://user-images.githubusercontent.com/117438320/217582050-7631c4f2-a143-4311-b3d5-598496301c55.png)
-
 
 ## 📋 Tareas 
 
