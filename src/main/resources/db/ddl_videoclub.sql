@@ -67,6 +67,9 @@ create table reservas(
     id_usuario int not null,
     fecha_ini varchar(30),
     fecha_fin varchar(30),
+    precio varchar(10),
+    pagado varchar(30) DEFAULT "PENDIENTE",
+    estado varchar(30),
     primary key(id_usuario, id),
     foreign key(id_usuario) references usuario(id_usuario) ON delete cascade on update cascade,
     foreign key(id) references peliculas(id) on delete cascade on update cascade
