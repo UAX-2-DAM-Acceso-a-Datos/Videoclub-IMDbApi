@@ -1,0 +1,60 @@
+package com.uax.accesodatos.repository;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+import com.uax.accesodatos.dto.FavoritosDto;
+import com.uax.accesodatos.mapper.FavoritosMapper;
+import com.uax.acessodatos.Interface.FavoritoInterface;
+
+@Repository
+public class FavoritosRepository implements FavoritoInterface {
+	@Autowired
+	private JdbcTemplate jdbctemplate;
+
+	@Override
+	public List<FavoritosDto> getFavoritos(String user) {
+		try {
+			String sql = String.format("Select id from favoritos,users where username.favoritos='%s'", user);
+			return jdbctemplate.query(sql, new FavoritosMapper());
+
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		return null;
+
+	}
+
+	@Override
+	public boolean addFavorito(FavoritosDto a) {
+		try {
+			String sql = String.format("Insert into favoritos(id_usuario,id) values '%s','%s' ", a.getUsername(),
+					a.getId());
+			jdbctemplate.execute(sql);
+			return true;
+
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		return false;
+
+	}
+
+	@Override
+	public boolean deleteFavorito(FavoritosDto a) {
+		try {
+			String sql = String.format("delete * from favoritos where username = '%s' and id = '%s' ", a.getUsername(),
+					a.getId());
+			jdbctemplate.execute(sql);
+			return true;
+
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		return false;
+	}
+
+}
