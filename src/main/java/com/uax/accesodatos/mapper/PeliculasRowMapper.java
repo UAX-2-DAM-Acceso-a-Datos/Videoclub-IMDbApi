@@ -1,5 +1,8 @@
 package com.uax.accesodatos.mapper;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import org.springframework.jdbc.core.RowMapper;
 
 import com.uax.accesodatos.dto.PeliculasDto;
@@ -7,7 +10,7 @@ import com.uax.accesodatos.dto.PeliculasDto;
 public class PeliculasRowMapper implements RowMapper<PeliculasDto>{
         
         @Override
-        public PeliculasDto mapRow(java.sql.ResultSet rs, int rowNum) throws java.sql.SQLException {
+        public PeliculasDto mapRow(ResultSet rs, int rowNum) throws SQLException {
                 PeliculasDto pelicula = new PeliculasDto();
                 pelicula.setId(rs.getString(0));
                 pelicula.setTitulo(rs.getString(1));
