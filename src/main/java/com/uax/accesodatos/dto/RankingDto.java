@@ -1,6 +1,6 @@
 package com.uax.accesodatos.dto;
 
-public class RankingDTO {
+public class RankingDto {
 	
 private String id;
 private String title;
@@ -11,7 +11,7 @@ private double imDbRating;
 
 
 
-public RankingDTO(String id,String title,int rank,String year,String Image,double imDbRating )
+public RankingDto(String id,String title,int rank,String year,String Image,double imDbRating )
 {this.id=id;
 this.title=title;
 this.rank=rank;
