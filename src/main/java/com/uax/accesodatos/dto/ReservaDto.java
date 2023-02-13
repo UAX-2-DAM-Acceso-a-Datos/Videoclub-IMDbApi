@@ -3,7 +3,7 @@ package com.uax.accesodatos.dto;
 public class ReservaDto {
 
 	private String id;
-	private String usuario;
+	private String username;
 	private String fech_ini;
 	private String fech_fin;
 	private String precio;
@@ -18,10 +18,10 @@ public class ReservaDto {
 		this.id = id;
 	}
 	public String getUsuario() {
-		return usuario;
+		return username;
 	}
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setUsuario(String username) {
+		this.username = username;
 	}
 	public String getFech_ini() {
 		return fech_ini;
