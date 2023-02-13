@@ -14,7 +14,7 @@ public class FavoritosMapper implements RowMapper<FavoritosDto> {
 		// Creamos un objeto para poder mapearlo
 		FavoritosDto pelicula = new FavoritosDto();
 		// Le asiganmos al id de el usuario el id que recoge el mapper
-		pelicula.setId_usuario(rs.getInt(1));
+		pelicula.setUsername(rs.getString(1));
 		// Le asiganmos al id de la pelicula el id que recoge el mapper
 		pelicula.setId(rs.getString(2));
 		// Devolvemos pelicula con los valores ya cargados

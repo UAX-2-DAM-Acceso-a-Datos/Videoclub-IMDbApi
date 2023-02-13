@@ -2,11 +2,11 @@ package com.uax.accesodatos.dto;
 
 public class FavoritosDto {
 
-	private int id_usuario;
+	private String username;
 	private String id;
 
-	public FavoritosDto(int id_usuario, String id) {
-		this.id_usuario = id_usuario;
+	public FavoritosDto(String username, String id) {
+		this.username =username;
 		this.id = id;
 	}
 
@@ -14,12 +14,12 @@ public class FavoritosDto {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getId_usuario() {
-		return id_usuario;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setId_usuario(int id_usuario) {
-		this.id_usuario = id_usuario;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getId() {
@@ -32,7 +32,7 @@ public class FavoritosDto {
 
 	@Override
 	public String toString() {
-		return "FavoritosDto [id_usuario=" + id_usuario + ", id=" + id + "]";
+		return "FavoritosDto [username=" + username + ", id=" + id + "]";
 	}
 
 }
