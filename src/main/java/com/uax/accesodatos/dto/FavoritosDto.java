@@ -10,6 +10,10 @@ public class FavoritosDto {
 		this.id = id;
 	}
 
+	public FavoritosDto() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId_usuario() {
 		return id_usuario;
 	}
