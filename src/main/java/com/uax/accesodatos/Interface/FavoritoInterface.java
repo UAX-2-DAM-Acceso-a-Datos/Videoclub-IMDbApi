@@ -1,4 +1,4 @@
-package com.uax.acessodatos.Interface;
+package com.uax.accesodatos.Interface;
 
 import java.util.List;
 

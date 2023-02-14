@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.uax.accesodatos.Interface.FavoritoInterface;
 import com.uax.accesodatos.dto.FavoritosDto;
 import com.uax.accesodatos.mapper.FavoritosMapper;
-import com.uax.acessodatos.Interface.FavoritoInterface;
 
 @Repository
 public class FavoritosRepository implements FavoritoInterface {
