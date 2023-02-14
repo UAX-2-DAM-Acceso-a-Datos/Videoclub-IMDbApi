@@ -65,6 +65,7 @@ public class VideoClubSecurity {
 
 		http.authorizeRequests()
 		.requestMatchers("/index").authenticated()
+		.requestMatchers("/favoritos").permitAll()
 		.and().httpBasic()
 		.and().csrf().disable()
 		.formLogin()
