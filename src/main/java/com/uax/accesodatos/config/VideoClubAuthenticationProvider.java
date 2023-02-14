@@ -17,12 +17,7 @@ public class VideoClubAuthenticationProvider implements AuthenticationProvider {
 		String name = authentication.getName();
 		String password = authentication.getCredentials().toString();
 
-//    if (Aquí iria una autenticacion externa) {
-
 		return new UsernamePasswordAuthenticationToken(name, password, new ArrayList<>());
-//    } else {
-//        return null;
-//    }
 	}
 
 	@Override

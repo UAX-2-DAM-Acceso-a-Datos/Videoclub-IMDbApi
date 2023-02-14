@@ -15,13 +15,12 @@ public class FavoritoController {
 	@Autowired
 	private FavoritosRepository favrepository;
 	
-	@GetMapping("/go-to-favoritos")
-	public String gotofavoritos(Model model , HttpServletRequest hp ) {
+	@GetMapping("/goToFavoritos")
+	public String goToFavoritos(Model model , HttpServletRequest hp ) {
 		FavoritosDto favorito = new FavoritosDto();
 		favorito.getUsername();
-		
+		System.out.println("klk esto va");
 		
 		return "favoritos";
-
 	}
 }
