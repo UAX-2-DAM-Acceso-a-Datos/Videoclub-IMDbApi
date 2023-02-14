@@ -11,15 +11,26 @@ public class PeliculasRowMapper implements RowMapper<PeliculasDto>{
         
         @Override
         public PeliculasDto mapRow(ResultSet rs, int rowNum) throws SQLException {
+        	//Creación del objeto
                 PeliculasDto pelicula = new PeliculasDto();
+              //Asignacion del atributo al objeto
                 pelicula.setId(rs.getString(0));
+              //Asignacion del atributo al objeto
                 pelicula.setTitulo(rs.getString(1));
+              //Asignacion del atributo al objeto
                 pelicula.setPlot(rs.getString(2));
+              //Asignacion del atributo al objeto
                 pelicula.setImagen(rs.getString(3));
+              //Asignacion del atributo al objeto
                 pelicula.setImDbRating(rs.getString(4));
+              //Asignacion del atributo al objeto
                 pelicula.setTrailer(rs.getString(5));
+              //Asignacion del atributo al objeto
                 pelicula.setRuntimeStr(rs.getString(6));
+              //Asignacion del atributo al objeto
                 pelicula.setPegi(rs.getString(7));
+                
+              //Retorno de pelicula
                 return pelicula;
         }
     
