@@ -19,8 +19,15 @@ public class FavoritoController {
 	public String goToFavoritos(Model model , HttpServletRequest hp ) {
 		FavoritosDto favorito = new FavoritosDto();
 		favorito.getUsername();
-		System.out.println("klk esto va");
+		//System.out.println("klk esto va");
 		
 		return "favoritos";
+	}
+	
+	@GetMapping("/goToIndex")
+	public String goToIndex(HttpServletRequest hp) {
+		
+		
+		return "index";
 	}
 }
