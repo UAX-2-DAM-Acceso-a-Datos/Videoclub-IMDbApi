@@ -15,6 +15,7 @@ public class PeliculasRepository {
 	JdbcTemplate jdbcTemplate;
 	
 	public List<PeliculasDto> getAllPeliculas(){
+		//query obtener todas las peliculas
 		return jdbcTemplate.query("SELECT *  FROM peliculas", new PeliculasRowMapper());
 	}
 	

@@ -11,15 +11,22 @@ public class ReservaRowMapper implements RowMapper<ReservaDto>{
 
 	@Override
 	public ReservaDto mapRow(ResultSet rs, int rowNum) throws SQLException {
-
-		ReservaDto reserva = new ReservaDto();
 		
+		//Creación del objeto
+		ReservaDto reserva = new ReservaDto();
+		//Asignacion del atributo al objeto
 		reserva.setUsuario(rs.getString(0));
+		//Asignacion del atributo al objeto
 		reserva.setId(rs.getString(1));
+		//Asignacion del atributo al objeto
 		reserva.setFech_ini(rs.getString(2));
+		//Asignacion del atributo al objeto
 		reserva.setFech_fin(rs.getString(3));
+		//Asignacion del atributo al objeto
 		reserva.setPrecio(rs.getString(4));
+		//Asignacion del atributo al objeto
 		reserva.setEstado(rs.getString(5));
+		//Asignacion del atributo al objeto
 		reserva.setPagado(rs.getString(6));
 		
 		return reserva;

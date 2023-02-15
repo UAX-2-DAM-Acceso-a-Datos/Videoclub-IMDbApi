@@ -18,6 +18,7 @@ public class UsuarioRepository implements UsuarioInterface{
 	public UsersDto findByUsername(String username) {
 
 		try {
+			//obtener user de security y su authority 
 			String sql = String.format("SELECT users.username, users.password, authorities.authority FROM users, authorities"
 					+" WHERE users.username=authorities.username and users.username='%s'", username);
 			return jdbctemplate.queryForObject(sql, new UsuarioRowMapper());
