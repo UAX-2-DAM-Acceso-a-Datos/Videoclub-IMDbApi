@@ -29,7 +29,7 @@ public class ReservaRepository implements ReservaInterface{
 
 	// Eliminar reserva por usernmae e id.
 	@Override
-	public boolean deleteReserva(String username, int id) {
+	public boolean deleteReserva(String username, String id) {
 		try {
 		String sql = String.format("DELETE FROM reservas WHERE username='%s' and id='%s'",username,id);
 		jdbcTemplate.execute(sql);
