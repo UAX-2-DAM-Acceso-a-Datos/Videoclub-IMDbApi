@@ -65,11 +65,11 @@ public class VideoClubSecurity {
 
 		http.authorizeRequests()
 		.requestMatchers("/index").authenticated()
-		.requestMatchers("/favoritos").permitAll()
+		.requestMatchers("/favoritos").authenticated()
 		.and().httpBasic()
 		.and().csrf().disable()
 		.formLogin()
-		.loginPage("/login")
+		.loginPage("/go-to-login")
 		.loginProcessingUrl("/process-login");
 //        .failureUrl("/login-error.html");
 
