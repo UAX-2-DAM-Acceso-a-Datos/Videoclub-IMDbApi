@@ -18,6 +18,7 @@ public class FavoritosRepository implements FavoritoInterface {
 	@Override
 	public List<FavoritosDto> getFavoritos(String user) {
 		try {
+			//query obtener favoritos
 			String sql = String.format("Select id from favoritos,users where username.favoritos='%s'", user);
 			return jdbctemplate.query(sql, new FavoritosMapper());
 
@@ -31,6 +32,7 @@ public class FavoritosRepository implements FavoritoInterface {
 	@Override
 	public boolean addFavorito(FavoritosDto a) {
 		try {
+			//query insertar a favoritos 
 			String sql = String.format("Insert into favoritos(id_usuario,id) values '%s','%s' ", a.getUsername(),
 					a.getId());
 			jdbctemplate.execute(sql);
@@ -46,6 +48,7 @@ public class FavoritosRepository implements FavoritoInterface {
 	@Override
 	public boolean deleteFavorito(FavoritosDto a) {
 		try {
+			//borrar de la tabla de favoritos
 			String sql = String.format("delete * from favoritos where username = '%s' and id = '%s' ", a.getUsername(),
 					a.getId());
 			jdbctemplate.execute(sql);

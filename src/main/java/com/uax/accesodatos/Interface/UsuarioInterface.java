@@ -4,6 +4,6 @@ import com.uax.accesodatos.dto.UsersDto;
 
 public interface UsuarioInterface {
 
-	public UsersDto findByUsername(String username);
+	public UsersDto findByUsername(String username);//obtener un usuario
 	
 }
