@@ -24,9 +24,9 @@ public class ReservaController {
 	@GetMapping("/reserva")
 	public String getReserva(Model model, HttpServletRequest http) {
 		
-		//String username = http.getUserPrincipal().getName();// Obtener el usuario
+		String username = http.getUserPrincipal().getName();// Obtener el usuario
 		
-		//List<ReservaDto> listaReservas = reservaRepository.getReserva(username); // Obtener todas las reservas de un usuario
+		List<ReservaDto> listaReservas = reservaRepository.getReserva(username); // Obtener todas las reservas de un usuario
 		
 		
 		return "reservas";
