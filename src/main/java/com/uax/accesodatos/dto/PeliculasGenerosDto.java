@@ -1,11 +1,11 @@
 package com.uax.accesodatos.dto;
 
-public class peliculas_generoDto {
+public class PeliculasGenerosDto {
 
 	private int id_genero;
 	private String id_pelicula;
 	
-	public peliculas_generoDto(int id_genero,String id_pelicula) {
+	public PeliculasGenerosDto(int id_genero,String id_pelicula) {
 		this.id_genero=id_genero;
 		this.id_pelicula=id_pelicula;	
 	}
