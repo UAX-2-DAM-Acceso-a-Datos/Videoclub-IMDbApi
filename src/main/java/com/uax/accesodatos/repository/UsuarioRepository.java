@@ -28,6 +28,20 @@ public class UsuarioRepository implements UsuarioInterface{
 		}
 		
 	}
+	@Override
+	public UsersDto findInfoUsuario(String username) {
+
+		try {
+			//obtener user de security y su authority 
+			String sql = String.format("SELECT * FROM usuario"
+					+" WHERE usuario.username='%s'", username);
+			return jdbctemplate.queryForObject(sql, new UsuarioRowMapper());
+			
+		}catch(Exception e) {
+			return null;
+		}
+		
+	}
 
 	
 }
