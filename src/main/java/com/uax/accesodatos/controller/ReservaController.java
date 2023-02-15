@@ -13,5 +13,11 @@ public class ReservaController {
 		
 		return "reserva";
 	}
+	// Ir al login 
+	@GetMapping("/go-to-login")
+	public String getLogin() {
+		
+		return "login";
+	}
 	
 }
