@@ -64,13 +64,14 @@ public class VideoClubSecurity {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests()
-		.requestMatchers("/index").authenticated()
+		.requestMatchers("/").authenticated()
 		.requestMatchers("/favoritos").authenticated()
 		.and().httpBasic()
 		.and().csrf().disable()
 		.formLogin()
-		.loginPage("/go-to-login")
-		.loginProcessingUrl("/process-login");
+		.loginPage("/login")
+		.loginProcessingUrl("/process-login")
+		.defaultSuccessUrl("/");
 //        .failureUrl("/login-error.html");
 
 //		http.authorizeRequests()

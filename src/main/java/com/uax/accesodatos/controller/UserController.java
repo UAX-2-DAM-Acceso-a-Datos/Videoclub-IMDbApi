@@ -25,7 +25,7 @@ public class UserController {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	@PostMapping(value = "/registrarUsuario")
-	public ResponseEntity<String> register(@RequestBody UsersDto myUser) {
+	public String register(@RequestBody UsersDto myUser) {
 		List<GrantedAuthority> authorities = new ArrayList<>();
 		authorities.add(new SimpleGrantedAuthority(myUser.getRoles()));
 
@@ -41,7 +41,7 @@ public class UserController {
 
 		jdbcUserDetailsManager.createUser(user);
 
-		return new ResponseEntity<>("OK", HttpStatus.OK);
+		return "redirect:/go-to-login";
 	}
 
 }

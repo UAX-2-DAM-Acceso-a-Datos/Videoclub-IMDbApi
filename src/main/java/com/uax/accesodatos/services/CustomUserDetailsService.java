@@ -40,16 +40,17 @@ public class CustomUserDetailsService implements UserDetailsService {
         return user;
     }
     
-    public void registrarUsuario(UsersDto myUser) {
-    	
-		List<GrantedAuthority> authorities = new ArrayList<>();
-		
-		authorities.add(new SimpleGrantedAuthority(myUser.getRoles()));
-		String encodedPassword = bCryptPasswordEncoder.encode(myUser.getPassword());
-		User user = new User(myUser.getUserName(), encodedPassword, authorities);
-		
-		jdbcUserDetailManager.createUser(user);
-    	
-    }
+    public boolean registerUserDB(UsersDto usuario) {
 
+		List<GrantedAuthority> authorities = new ArrayList<>();
+		authorities.add(new SimpleGrantedAuthority(usuario.getRoles()));
+
+		String encodededPassword = bCryptPasswordEncoder.encode(usuario.getPassword());
+
+		User user = new User(usuario.getUserName(), encodededPassword, authorities);
+
+		jdbcUserDetailManager.createUser(user);
+
+		return true;
+}
 }
