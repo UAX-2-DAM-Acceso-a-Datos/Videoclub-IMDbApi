@@ -27,7 +27,14 @@ public class FavoritoController {
 	@GetMapping("/goToIndex")
 	public String goToIndex(HttpServletRequest hp) {
 		
-		
 		return "index";
 	}
+	
+	@GetMapping("/goToPopulares")
+	public String goToPopulares(HttpServletRequest hp) {
+		
+		return "populares";
+	}
+	
+	
 }
