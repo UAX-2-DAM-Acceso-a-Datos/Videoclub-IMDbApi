@@ -34,17 +34,15 @@ public class FavoritosRepository implements FavoritoInterface {
 	public boolean addFavorito(FavoritosDto a) {
 		try {
 			//query insertar a favoritos 
-			String sql = String.format("Insert into favoritos(username,id) values '%s','%s' ", a.getUsername(),
+			String sql = String.format("Insert into favoritos(username,id) values ('%s','%s')", a.getUsername(),
 					a.getId());
 			jdbctemplate.execute(sql);
 			return true;
 
 		} catch (Exception e) {
 			e.getMessage();
-			return false;
 		}
-		
-
+		return false;
 	}
 
 	@Override

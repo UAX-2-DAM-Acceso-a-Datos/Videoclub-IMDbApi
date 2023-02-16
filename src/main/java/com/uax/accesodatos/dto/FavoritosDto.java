@@ -14,6 +14,10 @@ public class FavoritosDto {
 		// TODO Auto-generated constructor stub
 	}
 
+	public FavoritosDto(Object setUsername, Object setId) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getUsername() {
 		return username;
 	}
