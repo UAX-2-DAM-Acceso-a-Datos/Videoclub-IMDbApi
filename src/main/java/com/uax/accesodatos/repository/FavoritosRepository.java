@@ -19,13 +19,14 @@ public class FavoritosRepository implements FavoritoInterface {
 	public List<FavoritosDto> getFavoritos(String user) {
 		try {
 			//query obtener favoritos
-			String sql = String.format("Select id from favoritos,users where username.favoritos='%s'", user);
+			String sql = String.format("Select peliculas.id from favoritos,users peliculas WHERE favoritos.username=users.username AND favoritos.id=peliculas.id AND users.username='%s'", user);
 			return jdbctemplate.query(sql, new FavoritosMapper());
 
 		} catch (Exception e) {
 			e.getMessage();
+			return null;
 		}
-		return null;
+		
 
 	}
 
@@ -33,15 +34,16 @@ public class FavoritosRepository implements FavoritoInterface {
 	public boolean addFavorito(FavoritosDto a) {
 		try {
 			//query insertar a favoritos 
-			String sql = String.format("Insert into favoritos(id_usuario,id) values '%s','%s' ", a.getUsername(),
+			String sql = String.format("Insert into favoritos(username,id) values '%s','%s' ", a.getUsername(),
 					a.getId());
 			jdbctemplate.execute(sql);
 			return true;
 
 		} catch (Exception e) {
 			e.getMessage();
+			return false;
 		}
-		return false;
+		
 
 	}
 
@@ -49,15 +51,16 @@ public class FavoritosRepository implements FavoritoInterface {
 	public boolean deleteFavorito(FavoritosDto a) {
 		try {
 			//borrar de la tabla de favoritos
-			String sql = String.format("delete * from favoritos where username = '%s' and id = '%s' ", a.getUsername(),
+			String sql = String.format("DELETE from favoritos where username = '%s' and id = '%s' ", a.getUsername(),
 					a.getId());
 			jdbctemplate.execute(sql);
 			return true;
 
 		} catch (Exception e) {
 			e.getMessage();
+			return false;
 		}
-		return false;
+		
 	}
 
 }
