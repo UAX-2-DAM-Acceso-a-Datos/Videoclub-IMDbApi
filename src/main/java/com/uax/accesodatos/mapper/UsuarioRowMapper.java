@@ -19,12 +19,6 @@ public class UsuarioRowMapper implements RowMapper<UsersDto>{
 		user.setPassword(rs.getString(2));
 		//Asignacion del atributo al objeto
 		user.setRoles(rs.getString(3));
-		//Asignacion del atributo al objeto
-		user.setEmail(rs.getString(4));
-		//Asignacion del atributo al objeto
-		user.setTelefono(rs.getString(5));
-		//Asignacion del atributo al objeto
-		user.setFecNac(rs.getString(6));
 		
 		return user;
 	}

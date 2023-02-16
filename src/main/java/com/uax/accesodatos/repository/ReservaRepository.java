@@ -21,7 +21,7 @@ public class ReservaRepository implements ReservaInterface{
 	public List<ReservaDto> getReserva(String username) {
 		
 		String sql = String.format("SELECT id_usuario, id, fecha_ini, fecha_fin, precio, estado, pagado"
-				+ " FROM reservas WHERE username='%s%",username);
+				+ " FROM reservas WHERE username='%s'",username);
 		List<ReservaDto> listaReservas = jdbcTemplate.query(sql, new ReservaRowMapper());
 		
 		return listaReservas;
