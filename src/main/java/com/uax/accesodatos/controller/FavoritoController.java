@@ -1,11 +1,14 @@
 package com.uax.accesodatos.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.uax.accesodatos.dto.FavoritosDto;
+import com.uax.accesodatos.dto.PeliculasDto;
 import com.uax.accesodatos.repository.FavoritosRepository;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -30,11 +33,16 @@ public class FavoritoController {
 		return "index";
 	}
 	
-	@GetMapping("/goToPopulares")
-	public String goToPopulares(HttpServletRequest hp) {
+	@GetMapping("/Favoritos")
+	public String GetFavoritos(HttpServletRequest hp) {
+		
+			ArrayList<PeliculasDto> favs=new ArrayList();
+			
 		
 		return "populares";
 	}
+	
+	
 	
 	
 }
