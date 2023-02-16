@@ -108,7 +108,7 @@
                                         	<a th:text="${pelicula.rank}"></a>
                                         	 <a th:href="@{'/goToFavoritos?id='}+${pelicula.id}" class="button">Añadir a favoritos</a>
                                             <h3 th:text="${pelicula.title}" class="title"><a href="#"></a></h3	>
-                                            <a href="#" class="button">Trailer</a>
+                                            <a th:href="@{'/trailer?id='}+${pelicula.id}" class="button">Trailer</a>
                                         </div>
                                     </div>
                                 </div>
