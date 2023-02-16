@@ -47,22 +47,29 @@ public class ReservaController {
 	// Add reserva por usuario de pelicula
 	@GetMapping("/addReserva")
 	public String addReserva(HttpServletRequest http, @RequestParam("id") String id) {
+		
 		// Variables
 		ReservaDto reserva = new ReservaDto();
-		double resultado = Math.random()*2+1;
-		System.out.println(resultado);
+		double precio = Math.random()*2+1; // Precio random de la pelicula
+		
 		// Variables de fechas
 		DateTimeFormatter fecha = DateTimeFormatter.ofPattern("dd/MM/YYYY");
 		LocalDateTime now = LocalDateTime.now();
 		LocalDateTime fechFin = now.plusDays(3);
+		
 		// Insertar atributos
 		reserva.setUsuario(http.getUserPrincipal().getName());
 		reserva.setId(id);
 		reserva.setFech_ini(fecha.format(now));
 		reserva.setFech_fin(fecha.format(now.plusDays(3)));
+		reserva.setPrecio(Math.round(precio * 100d) /100d);
 		reserva.setEstado("SIN ENTRGAR");
+		reserva.setPagado("PENDIENTE");
 		
+		// Llamada al repository
 		
+		reservaRepository.addReserva(reserva); // Insertar reserva
+
 		return "reservas";
 	}
 	
