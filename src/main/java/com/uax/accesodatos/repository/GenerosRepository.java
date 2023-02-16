@@ -14,6 +14,7 @@ public class GenerosRepository {
 	JdbcTemplate jdbcTemplate;
 	
 	public boolean saveGeneros(GenerosDto genero){
+		//insert genero
 		String sql=String.format("INSERT INTO genero VALUES('%d','%s')", genero.getId(),genero.getGenero());
 		
 		return true;
