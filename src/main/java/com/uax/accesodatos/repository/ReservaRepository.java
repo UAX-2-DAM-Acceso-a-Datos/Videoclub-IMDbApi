@@ -20,7 +20,7 @@ public class ReservaRepository implements ReservaInterface{
 	@Override
 	public List<ReservaDto> getReserva(String username) {
 		
-		String sql = String.format("SELECT id_usuario, id, fecha_ini, fecha_fin, precio, estado, pagado"
+		String sql = String.format("SELECT username, id, fecha_ini, fecha_fin, precio, estado, pagado"
 				+ " FROM reservas WHERE username='%s'",username);
 		List<ReservaDto> listaReservas = jdbcTemplate.query(sql, new ReservaRowMapper());
 		
@@ -38,6 +38,22 @@ public class ReservaRepository implements ReservaInterface{
 			e.getMessage();
 			return false;
 		}
+	}
+
+	// Add reserva por Username e Id
+	@Override
+	public boolean addReserva(ReservaDto reserva) {
+		
+		try {
+			String sql = String.format("INSERT INTO reservas VALUES(username,id,fecha_ini,fecha_fin,"
+					+ "precio,estado,pagado)",reserva.getUsuario(),reserva.getId(),reserva.getFech_fin()
+					,reserva.getPrecio(),reserva.getEstado(),reserva.getPagado());
+			
+		}catch (Exception e) {
+
+		}
+		
+		return false;
 	}
 	
 }

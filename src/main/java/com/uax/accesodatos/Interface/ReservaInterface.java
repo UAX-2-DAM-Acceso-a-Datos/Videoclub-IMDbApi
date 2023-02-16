@@ -8,5 +8,6 @@ public interface ReservaInterface {
 	
 	public List<ReservaDto> getReserva(String username);// Obtener las reservas
 	public boolean deleteReserva(String username, String id);// Eliminar la reserva.
+	public boolean addReserva(ReservaDto reserva);// Add reserva
 
 }

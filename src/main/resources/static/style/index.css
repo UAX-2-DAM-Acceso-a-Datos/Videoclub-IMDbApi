@@ -148,3 +148,7 @@
             transform: translate(5px, -50%);
     opacity: 1;
   }
+  .bookmark{
+  width:3rem;
+  height:3rem;
+  }

@@ -54,7 +54,6 @@
                     Populares
                 </a>
             </li>
-       
         </ul>
         <hr>
         <div class="dropdown">
@@ -91,17 +90,13 @@
                             <div class="example-2 card">
                                 <div class="wrapper" th:style="'background: url('+${pelicula.image}+') center/cover no-repeat;'">
                                     <div class="header">
+                                        <div class="menu-content">
+                                            <!-- Bookmark add to reserva -->
+                                        <a th:href="@{'/addReserva?id='}+${pelicula.id}"class="fa fa-heart-o position-absolute top-0 end-25"><span><img class="bookmark" th:src="@{./images/bookmark.png}"></span></a>
+                                        </div>
                                         <div class="date">
                                             <span th:text="${pelicula.year}" class="day"></span>
-               
                                         </div>
-                                        <ul class="menu-content">
-                                            <li>
-                                                <a href="#" class="fa fa-bookmark-o"></a>
-                                            </li>
-                                            <li><a href="#" class="fa fa-heart-o"><span>18</span></a></li>
-                                            <li><a href="#" class="fa fa-comment-o"><span>3</span></a></li>
-                                        </ul>
                                     </div>
                                     <div class="data">
                                         <div class="content">

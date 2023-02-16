@@ -6,7 +6,7 @@ public class ReservaDto {
 	private String username;
 	private String fech_ini;
 	private String fech_fin;
-	private String precio;
+	private double precio;
 	private String pagado;
 	private String estado;
 
@@ -35,10 +35,10 @@ public class ReservaDto {
 	public void setFech_fin(String fech_fin) {
 		this.fech_fin = fech_fin;
 	}
-	public String getPrecio() {
+	public double getPrecio() {
 		return precio;
 	}
-	public void setPrecio(String precio) {
+	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
 	public String getPagado() {
