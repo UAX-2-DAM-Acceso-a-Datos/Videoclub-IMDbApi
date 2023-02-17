@@ -11,8 +11,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class PeliculasUtils {
-	@Value("${api.key}")
-	private String apiKey;
+	/*
+	 * @Value("${api.key}") private String apiKey;
+	 */
 	
 	public String getResponseToAPIPeliculas(String uri) throws IOException, InterruptedException {
 		

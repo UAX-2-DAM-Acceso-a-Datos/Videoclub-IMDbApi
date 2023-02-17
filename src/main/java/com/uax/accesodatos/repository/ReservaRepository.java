@@ -49,7 +49,7 @@ public class ReservaRepository implements ReservaInterface{
 		
 		try {
 			
-			String sql = String.format("INSERT INTO reservas VALUES('%s','%s','%s','%s','%,.2f','%s','%s')",
+			String sql = String.format("INSERT INTO reservas VALUES('%s','%s','%s','%s','%d','%s','%s')",
 					reserva.getUsuario(),reserva.getId(),reserva.getFech_ini(),reserva.getFech_fin()
 					,reserva.getPrecio(),reserva.getEstado(),reserva.getPagado()); // Query inserccion
 			jdbcTemplate.execute(sql); // Ejecucion de la query

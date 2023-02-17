@@ -12,15 +12,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.uax.accesodatos.dto.ReservaDto;
-import com.uax.accesodatos.repository.ReservaRepository;
+import com.uax.accesodatos.services.ReservaService;
 
 import jakarta.servlet.http.HttpServletRequest;
+
+import com.uax.accesodatos.services.ReservaService;
 
 @Controller
 public class ReservaController {
 
 	@Autowired
-	ReservaRepository reservaRepository;
+	ReservaService reservaService;
 	
 	// Obtener vista Reserva
 	@GetMapping("/reserva")
@@ -28,7 +30,7 @@ public class ReservaController {
 		
 		String username = http.getUserPrincipal().getName();// Obtener el usuario
 		
-		List<ReservaDto> listaReservas = reservaRepository.getReserva(username); // Obtener todas las reservas de un usuario
+		List<ReservaDto> listaReservas = reservaService.listaReservaService(username); // Obtener todas las reservas de un usuario
 		
 		model.addAttribute("userName", http.getUserPrincipal().getName());
 		
@@ -39,7 +41,7 @@ public class ReservaController {
 	@PostMapping("/eliminarReserva")
 	public String deleteReserva(@RequestParam("username") String username, @RequestParam("id") String id) {
 		
-		reservaRepository.deleteReserva(username, id);
+		reservaService.deleteReservaService(username, id);
 		
 		return "reservas";
 	}
@@ -68,7 +70,7 @@ public class ReservaController {
 		
 		// Llamada al repository
 		
-		reservaRepository.addReserva(reserva); // Insertar reserva
+		reservaService.addReservaService(reserva); // Insertar reserva
 
 		return "reservas";
 	}
