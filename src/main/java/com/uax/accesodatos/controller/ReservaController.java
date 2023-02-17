@@ -68,8 +68,7 @@ public class ReservaController {
 		reserva.setEstado("SIN ENTRGAR");
 		reserva.setPagado("PENDIENTE");
 		
-		// Llamada al repository
-		
+		// Llamada al service	
 		reservaService.addReservaService(reserva); // Insertar reserva
 
 		return "reservas";
