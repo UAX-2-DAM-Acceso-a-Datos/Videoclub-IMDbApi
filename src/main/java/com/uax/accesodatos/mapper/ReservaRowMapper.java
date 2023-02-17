@@ -23,7 +23,7 @@ public class ReservaRowMapper implements RowMapper<ReservaDto>{
 		//Asignacion del atributo al objeto
 		reserva.setFech_fin(rs.getString(3));
 		//Asignacion del atributo al objeto
-		reserva.setPrecio(rs.getString(4));
+		reserva.setPrecio(rs.getDouble(4));
 		//Asignacion del atributo al objeto
 		reserva.setEstado(rs.getString(5));
 		//Asignacion del atributo al objeto

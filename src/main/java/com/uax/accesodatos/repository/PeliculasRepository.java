@@ -26,11 +26,14 @@ public class PeliculasRepository {
 	public   boolean savePeliculas(PeliculasDto peliculas) {
 		
 		try {
-			String sql=String.format("INSERT INTO Peliculas VALUES('%s','%s','%s','%s','%s','%s','%s','%s')",
+			String sql=String.format("INSERT INTO peliculas VALUES('%s','%s','%s','%s','%s','%s','%s','%s')",
 					peliculas.getId(),peliculas.getTitulo(),peliculas.getPlot(),peliculas.getImagen(),peliculas.getImDbRating(),
-					peliculas.getTrailer(),peliculas.getRuntimeStr(),peliculas.getPegi());
+					"N/A",peliculas.getRuntimeStr(),peliculas.getPegi());
+			
+			jdbcTemplate.execute(sql);
+			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.getMessage();
 			return false;
 		}
 		return true;
