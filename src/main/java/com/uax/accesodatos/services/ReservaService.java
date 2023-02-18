@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.uax.accesodatos.Interface.ReservaServiceInterface;
+import com.uax.accesodatos.dto.ListaReservaDto;
 import com.uax.accesodatos.dto.ReservaDto;
 import com.uax.accesodatos.repository.ReservaRepository;
 
@@ -40,7 +41,7 @@ public class ReservaService implements ReservaServiceInterface{
 
 	// Get all reservas
 	@Override
-	public List<ReservaDto> listaReservaService(String username) {
+	public List<ListaReservaDto> listaReservaService(String username) {
 
 		return reservaRepository.getReserva(username);
 	}
