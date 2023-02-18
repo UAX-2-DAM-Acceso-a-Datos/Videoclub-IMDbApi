@@ -30,9 +30,9 @@ public class ReservaController {
 		
 		String username = http.getUserPrincipal().getName();// Obtener el usuario
 		
-		List<ReservaDto> listaReservas = reservaService.listaReservaService(username); // Obtener todas las reservas de un usuario
-		
+		 
 		model.addAttribute("userName", http.getUserPrincipal().getName());
+		model.addAttribute("reservas", reservaService.listaReservaService(username)); // Obtener todas las reservas de un usuario
 		
 		return "reservas";
 	}
@@ -64,12 +64,11 @@ public class ReservaController {
 		reserva.setId(id);
 		reserva.setFech_ini(fecha.format(now));
 		reserva.setFech_fin(fecha.format(now.plusDays(3)));
-		reserva.setPrecio(Math.round(precio * 100d) /100d);
+		reserva.setPrecio(3);
 		reserva.setEstado("SIN ENTRGAR");
 		reserva.setPagado("PENDIENTE");
 		
-		// Llamada al repository
-		
+		// Llamada al service	
 		reservaService.addReservaService(reserva); // Insertar reserva
 
 		return "reservas";

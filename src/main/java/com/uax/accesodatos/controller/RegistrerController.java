@@ -46,6 +46,6 @@ public class RegistrerController {
 
 		userService.registerUserDB(usuario);
 		
-		return "redirect:/go-to-login";
+		return "login";
 	}
 }

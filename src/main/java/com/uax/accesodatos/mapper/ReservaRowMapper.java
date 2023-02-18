@@ -15,19 +15,19 @@ public class ReservaRowMapper implements RowMapper<ReservaDto>{
 		//Creación del objeto
 		ReservaDto reserva = new ReservaDto();
 		//Asignacion del atributo al objeto
-		reserva.setUsuario(rs.getString(0));
+		reserva.setUsuario(rs.getString(1));
 		//Asignacion del atributo al objeto
-		reserva.setId(rs.getString(1));
+		reserva.setId(rs.getString(2));
 		//Asignacion del atributo al objeto
-		reserva.setFech_ini(rs.getString(2));
+		reserva.setFech_ini(rs.getString(3));
 		//Asignacion del atributo al objeto
-		reserva.setFech_fin(rs.getString(3));
+		reserva.setFech_fin(rs.getString(4));
 		//Asignacion del atributo al objeto
-		reserva.setPrecio(rs.getDouble(4));
+		reserva.setPrecio(rs.getInt(5));
 		//Asignacion del atributo al objeto
-		reserva.setEstado(rs.getString(5));
+		reserva.setEstado(rs.getString(6));
 		//Asignacion del atributo al objeto
-		reserva.setPagado(rs.getString(6));
+		reserva.setPagado(rs.getString(7));
 		
 		return reserva;
 	}

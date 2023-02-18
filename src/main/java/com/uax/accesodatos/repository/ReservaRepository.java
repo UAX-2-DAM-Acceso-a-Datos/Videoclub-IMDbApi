@@ -7,7 +7,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.uax.accesodatos.Interface.ReservaInterface;
+import com.uax.accesodatos.dto.ListaReservaDto;
 import com.uax.accesodatos.dto.ReservaDto;
+import com.uax.accesodatos.mapper.ListaReservaRowMapper;
 import com.uax.accesodatos.mapper.ReservaRowMapper;
 
 @Repository
@@ -18,13 +20,13 @@ public class ReservaRepository implements ReservaInterface{
 
 	// Obtener una lista de todas las Reservas por username.
 	@Override
-	public List<ReservaDto> getReserva(String username) {
+	public List<ListaReservaDto> getReserva(String username) {
 		
-		String sql = String.format("SELECT username, id, fecha_ini, fecha_fin, precio, estado, pagado"
-				+ " FROM reservas WHERE username='%s'",username); // Get all reservas
-		List<ReservaDto> listaReservas = jdbcTemplate.query(sql, new ReservaRowMapper());
+		String sql = String.format("SELECT peliculas.titulo, reservas.fecha_ini, reservas.fecha_fin, reservas.precio, reservas.estado, reservas.pagado FROM peliculas, reservas "
+				+ "WHERE peliculas.id=reservas.id and username='%s'",username); // Get all reservas
+		List<ListaReservaDto> listaReservas = jdbcTemplate.query(sql, new ListaReservaRowMapper());
 		
-		return listaReservas; // Devuelve
+		return listaReservas; // Devuelve la lista de las ReservasDto
 	}
 
 	// Eliminar reserva por usernmae e id.
@@ -49,9 +51,9 @@ public class ReservaRepository implements ReservaInterface{
 		
 		try {
 			
-			String sql = String.format("INSERT INTO reservas VALUES('%s','%s','%s','%s','%d','%s','%s')",
+			String sql = String.format("INSERT INTO reservas VALUES('%s','%s','%s','%s',%d,'%s','%s')",
 					reserva.getUsuario(),reserva.getId(),reserva.getFech_ini(),reserva.getFech_fin()
-					,reserva.getPrecio(),reserva.getEstado(),reserva.getPagado()); // Query inserccion
+					,2,reserva.getEstado(),reserva.getPagado()); // Query inserccion
 			jdbcTemplate.execute(sql); // Ejecucion de la query
 			
 		}catch (Exception e) {
