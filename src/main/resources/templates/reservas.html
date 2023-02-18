@@ -111,9 +111,9 @@
                             <th th:text="*{reserva.titulo}" scope="row"></th>
                             <td th:text="*{reserva.fecha_ini}" ></td>
                             <td th:text="*{reserva.fecha_fin}" ></td>
-                            <td class="text-center" th:text="*{reserva.precio}" ></td>
+                            <td class="text-center" th:text="*{reserva.precio} + '€'" ></td>
                             <td>
-                            	<button type="button" class="btn btn-danger" th:text="*{reserva.pagado} + '€'"></button>
+                            	<button type="button" class="btn btn-danger" th:text="*{reserva.pagado}"></button>
                             </td>
                             <td>
                             	<button type="button" class="btn btn-secondary" th:text="*{reserva.estado}"></button>

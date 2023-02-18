@@ -28,7 +28,7 @@ public class PeliculasRepository {
 		try {
 			String sql=String.format("INSERT INTO peliculas VALUES('%s','%s','%s','%s','%s','%s','%s','%s')",
 					peliculas.getId(),peliculas.getTitulo(),peliculas.getPlot(),peliculas.getImagen(),peliculas.getImDbRating(),
-					"N/A",peliculas.getRuntimeStr(),peliculas.getPegi());
+					peliculas.getTrailer(),peliculas.getRuntimeStr(),peliculas.getPegi());
 			
 			jdbcTemplate.execute(sql);
 			

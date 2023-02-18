@@ -6,12 +6,17 @@ import org.springframework.web.client.RestTemplate;
 
 import com.google.gson.Gson;
 import com.uax.accesodatos.dto.PeliculasDto;
+import com.uax.accesodatos.dto.peliculasresponsedto.PeliculasResponseDto;
 import com.uax.accesodatos.repository.PeliculasRepository;
 
 @Service
 public class PeliculaService {
 	@Autowired
 	public PeliculasRepository repository;
+	
+	@Autowired
+	TrailerService trailerService;
+	
 
 	private final String uricallPelicula = "https://imdb-api.com/en/API/SearchMovie/k_4yy73lat/";
 	private RestTemplate resT = new RestTemplate(); // Objeto que permite hacer llamadas de API
@@ -31,5 +36,40 @@ public class PeliculaService {
 		return pelicula;
 				
 	}
+	
+	
+	// Get pelicula by Id
+	public boolean getResponseById(String id) {
+		Gson gson = new Gson(); // Variable Gson para formatear de JSON a Object
+		PeliculasDto pelicula = new PeliculasDto();
+		
+		try {
+			String uricallById = "https://imdb-api.com/en/API/Title/k_4yy73lat/" + id; // Uri para sacar todos los datos de una pelicula en concreto,
+			
+			result = resT.getForObject(uricallById, String.class); // Resultado obtenido de la llamada api
+			PeliculasResponseDto peliculaResponse = gson.fromJson(result, PeliculasResponseDto.class); // Convierte el JSON en PeliculaResponseDto
+			
+			
+			// Pasar los datos de la respuesta al Objeto pelicula.
+			pelicula.setId(peliculaResponse.getId());
+			pelicula.setImagen(peliculaResponse.getImage());
+			pelicula.setImDbRating(peliculaResponse.getImDbRating());
+			pelicula.setPegi(peliculaResponse.getContentRating());
+			pelicula.setPlot(peliculaResponse.getPlot().replace("'", " "));
+			pelicula.setRuntimeStr(peliculaResponse.getRuntimeStr());
+			pelicula.setTitulo(peliculaResponse.getTitle());
+			pelicula.setTrailer(trailerService.gettrailerbyid(id));
+			
+			repository.savePeliculas(pelicula);
+		}catch(Exception e) {
+			e.getMessage();
+			return false;
+		}
+
+		
+		
+		return true;
+	}
+	
 
 }
