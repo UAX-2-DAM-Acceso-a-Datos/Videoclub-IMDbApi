@@ -26,22 +26,16 @@ public class FavoritoController {
 		
 		//Mostrar peliculas:
 		
-		
-		
-		
-		
+		return "favoritos";
+	}
+	
+	
+	@GetMapping("/Favoritos")
+	public String goToFavoritos(Model model) {
 		
 		
 		return "favoritos";
 	}
-	
-	@GetMapping("/goToIndex")
-	public String goToIndex(HttpServletRequest hp) {
-		
-		return "redirect:/";
-	}
-	
-	
 	
 	
 	
