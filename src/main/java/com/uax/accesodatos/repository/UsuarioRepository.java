@@ -42,6 +42,18 @@ public class UsuarioRepository implements UsuarioInterface{
 		}
 		
 	}
+	@Override
+	public boolean UserInUsuario(String username) {
+		try {
+			String sql = String.format("INSERT INTO usuario (username, telefono, email, fechNac) VALUES ('%s', '', '', NULL);",username);
+			jdbctemplate.execute(sql);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+		
+	}
+	
 
 	
 }

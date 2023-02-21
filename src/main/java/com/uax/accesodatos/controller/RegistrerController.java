@@ -3,6 +3,8 @@ package com.uax.accesodatos.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.management.MBeanRegistrationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.uax.accesodatos.dto.UsersDto;
+import com.uax.accesodatos.repository.UsuarioRepository;
 import com.uax.accesodatos.services.CustomUserDetailsService;
 @Controller
 
@@ -27,6 +30,8 @@ public class RegistrerController {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	@Autowired
 	CustomUserDetailsService userService;
+	@Autowired
+	UsuarioRepository usuarioRepository;
 	
 	@GetMapping("/pantallaRegistro")
 	public String irPantallaRegistro(Model model) {
@@ -46,6 +51,10 @@ public class RegistrerController {
 
 		userService.registerUserDB(usuario);
 		
-		return "login";
+		boolean a =usuarioRepository.UserInUsuario(usuario.getUserName());
+		if (a) {
+			return "login";
+		}
+		return"register";	
 	}
 }
