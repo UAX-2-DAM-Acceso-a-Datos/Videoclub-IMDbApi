@@ -52,6 +52,11 @@ public class FavoritoController {
 	@GetMapping("/Favoritos")
 	public String goToFavoritos(Model model, HttpServletRequest http) {
 		model.addAttribute("userName", http.getUserPrincipal().getName());
+		String username = http.getUserPrincipal().getName();// Obtener el usuario
+		List<PeliculasDto> peliculasfav= new ArrayList<>();
+		peliculasfav=peliculasRepository.getPeliculasId(username);
+		//Pasamos el model con la informacion de las peliculas guardadas en base de datos
+		model.addAttribute("peliculas",peliculasfav);
 		
 		return "/views/favoritos";
 	}
