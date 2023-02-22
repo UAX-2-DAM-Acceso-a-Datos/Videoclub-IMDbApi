@@ -33,13 +33,9 @@ public class FavoritoController {
 		String id_pelicula=id;
 		FavoritosDto fav = new FavoritosDto(username,id_pelicula);
 		favrepository.addFavorito(fav);
-<<<<<<< HEAD
 		
 		model.addAttribute("userName", http.getUserPrincipal().getName());
-		
-=======
 		peliculasService.getResponseById(id_pelicula);
->>>>>>> feature/Hector-Feature
 		//Mostrar peliculas:
 		List<PeliculasDto> peliculasfav= new ArrayList<>();
 		peliculasfav=peliculasRepository.getPeliculasId(username);
