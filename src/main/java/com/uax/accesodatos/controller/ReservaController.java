@@ -40,7 +40,7 @@ public class ReservaController {
 		model.addAttribute("userName", http.getUserPrincipal().getName());
 		model.addAttribute("reservas", reservaService.listaReservaService(username)); // Obtener todas las reservas de un usuario
 		
-		return "reservas";
+		return "/views/reservas";
 	}
 	
 	// Eliminar la reserva por usuario e id pelicula
@@ -49,7 +49,7 @@ public class ReservaController {
 	
 		reservaService.deleteReservaService(username, id);
 		
-		return "reservas";
+		return "/views/reservas";
 	}
 	
 	// Add reserva por usuario de pelicula
