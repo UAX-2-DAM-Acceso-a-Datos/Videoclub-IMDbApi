@@ -1,7 +1,7 @@
 package com.uax.accesodatos.repository;
 
+import java.util.ArrayList;
 import java.util.List;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,12 +23,27 @@ public class PeliculasRepository {
 		return jdbcTemplate.query("SELECT *  FROM peliculas", new PeliculasRowMapper());
 	}
 	
-	public   boolean savePeliculas(PeliculasDto peliculas) {
+	public List<PeliculasDto> getReservasById(String nombre) {
+		
+		String query="SELECT * FROM usuario,peliculas,reservas WHERE usuario.username=reservas.username AND reservas.id=peliculas.id AND usuario.username='" + nombre + "'";
+		return jdbcTemplate.query(query, new PeliculasRowMapper());
+		
+	}
+	
+	
+	public List<PeliculasDto> getFavoritosById(String nombre) {
+		
+		String query="SELECT * FROM usuario,peliculas,favoritos WHERE usuario.username=favoritos.username AND favoritos.id=peliculas.id AND usuario.username='" + nombre + "'";
+		return jdbcTemplate.query(query, new PeliculasRowMapper());
+		
+	}
+	
+	public boolean savePeliculas(PeliculasDto peliculas) {
 		
 		try {
 			String sql=String.format("INSERT INTO peliculas VALUES('%s','%s','%s','%s','%s','%s','%s','%s')",
 					peliculas.getId(),peliculas.getTitulo(),peliculas.getPlot(),peliculas.getImagen(),peliculas.getImDbRating(),
-					"N/A",peliculas.getRuntimeStr(),peliculas.getPegi());
+					peliculas.getTrailer(),peliculas.getRuntimeStr(),peliculas.getPegi());
 			
 			jdbcTemplate.execute(sql);
 			
@@ -37,6 +52,12 @@ public class PeliculasRepository {
 			return false;
 		}
 		return true;
+		
+	}
+	
+	public List<PeliculasDto>getPeliculasId(String id ){
+		String sql = String.format("SELECT peliculas.id,titulo,plot,imagen,imDbRating,trailer,runtimeStr,pegi FROM peliculas,favoritos WHERE peliculas.id=favoritos.id and favoritos.username='%s'",id);
+		return jdbcTemplate.query(sql, new PeliculasRowMapper());
 		
 	}
 }

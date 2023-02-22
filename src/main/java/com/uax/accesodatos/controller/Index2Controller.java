@@ -13,28 +13,17 @@ import com.uax.accesodatos.dto.RankingResponseDto;
 import com.uax.accesodatos.services.Top250Service;
 
 @Controller
-public class WelcomeController {
+public class Index2Controller {
 	@Autowired
 	private Top250Service serviciopelis;
-
-	@GetMapping("/login")
-	public String gotologin(Model model) throws Exception {
-
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		model.addAttribute("userName", authentication.getName());
-
-		return "login";
-	}
-
-	@GetMapping("/")
-	public String gotoIndex(Model model) throws Exception {
-
+	
+	@GetMapping("/index2")
+	public String gotoIndex2(Model model) throws Exception {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		model.addAttribute("userName", authentication.getName());
 		ArrayList<RankingResponseDto> lista = serviciopelis.getmostPopular();
-		model.addAttribute("peliculas", lista);
-
-		return "/views/index";
+		model.addAttribute("peliculas2", lista);
+		return "/views/index2";
 	}
-
+	
 }

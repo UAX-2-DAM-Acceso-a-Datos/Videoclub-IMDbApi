@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.uax.accesodatos.dto.ReservaDto;
+import com.uax.accesodatos.services.PeliculaService;
 import com.uax.accesodatos.services.ReservaService;
+import com.uax.accesodatos.services.TrailerService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -24,6 +26,10 @@ public class ReservaController {
 	@Autowired
 	ReservaService reservaService;
 	
+	@Autowired
+	PeliculaService peliculaService;
+	
+
 	// Obtener vista Reserva
 	@GetMapping("/reserva")
 	public String getReserva(Model model, HttpServletRequest http) {
@@ -34,16 +40,16 @@ public class ReservaController {
 		model.addAttribute("userName", http.getUserPrincipal().getName());
 		model.addAttribute("reservas", reservaService.listaReservaService(username)); // Obtener todas las reservas de un usuario
 		
-		return "reservas";
+		return "/views/reservas";
 	}
 	
 	// Eliminar la reserva por usuario e id pelicula
 	@PostMapping("/eliminarReserva")
 	public String deleteReserva(@RequestParam("username") String username, @RequestParam("id") String id) {
-		
+	
 		reservaService.deleteReservaService(username, id);
 		
-		return "reservas";
+		return "/views/reservas";
 	}
 	
 	// Add reserva por usuario de pelicula
@@ -69,9 +75,11 @@ public class ReservaController {
 		reserva.setPagado("PENDIENTE");
 		
 		// Llamada al service	
+		peliculaService.getResponseById(id); // Insertar pelicula en bbd
 		reservaService.addReservaService(reserva); // Insertar reserva
-
-		return "reservas";
+		
+		
+		return "redirect:/reserva";
 	}
 	
 	
