@@ -1,37 +1,24 @@
 package com.uax.accesodatos.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.util.ArrayList;
 
-import com.mysql.cj.xdevapi.Statement;
 import com.uax.accesodatos.IDAO.PeliculaDAOInterface;
 import com.uax.accesodatos.dto.PeliculasDto;
+import com.uax.accesodatos.repository.PeliculasRepository;
 
 public class PeliculaDAOImpl implements PeliculaDAOInterface {
 
 	
-	Statement statement=null;
-	PreparedStatement PST=null;
-	Connection connection = null;
-	PeliculasDto persona=null;
+	PeliculasRepository a= new PeliculasRepository();
 	
 	
-	public boolean GetAllPeliculas() {
+	public ArrayList<PeliculasDto> GetAllPeliculas() {
 		
+		ArrayList<PeliculasDto> b =new ArrayList();
+		b.addAll(a.getAllPeliculas());
 		
-		
-		
-		
-		
-		
-		return true;
+		String query="SELECT peliculas.nombre FROM usuarios,peliculas,reservas WHERE usuarios.username=reservas.username AND reservas.id=peliculas.id AND";
+		return b;
 	}
-	
-	public boolean getReservasByUser() {
-		
-	//Hacer la query	//String query="SELECT * FROM Peliculas";
-		
-		
-		return true;
-	}
+
 }

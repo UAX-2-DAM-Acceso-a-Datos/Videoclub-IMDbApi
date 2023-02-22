@@ -23,7 +23,33 @@ public class PeliculasRepository {
 		return jdbcTemplate.query("SELECT *  FROM peliculas", new PeliculasRowMapper());
 	}
 	
-	public   boolean savePeliculas(PeliculasDto peliculas) {
+	public List<PeliculasDto> getReservasById(String nombre) {
+		
+		String query="SELECT * FROM usuario,peliculas,reservas WHERE usuario.username=reservas.username AND reservas.id=peliculas.id AND usuario.username='" + nombre + "'";
+		return jdbcTemplate.query(query, new PeliculasRowMapper());
+		
+	}
+	
+	
+public List<PeliculasDto> getFavoritosById(String nombre) {
+		
+		String query="SELECT * FROM usuario,peliculas,favoritos WHERE usuario.username=favoritos.username AND favoritos.id=peliculas.id AND usuario.username='" + nombre + "'";
+		return jdbcTemplate.query(query, new PeliculasRowMapper());
+		
+	}
+	
+
+public boolean getPeliculaById() {
+	
+
+		
+	
+	return true;
+	
+	
+}
+
+	public boolean savePeliculas(PeliculasDto peliculas) {
 		
 		try {
 			String sql=String.format("INSERT INTO peliculas VALUES('%s','%s','%s','%s','%s','%s','%s','%s')",

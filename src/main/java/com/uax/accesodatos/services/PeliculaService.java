@@ -39,7 +39,7 @@ public class PeliculaService {
 	
 	
 	// Get pelicula by Id
-	public boolean getResponseById(String id) {
+	public PeliculasDto getResponseById(String id) {
 		Gson gson = new Gson(); // Variable Gson para formatear de JSON a Object
 		PeliculasDto pelicula = new PeliculasDto();
 		
@@ -63,12 +63,12 @@ public class PeliculaService {
 			repository.savePeliculas(pelicula);
 		}catch(Exception e) {
 			e.getMessage();
-			return false;
+			
 		}
 
 		
 		
-		return true;
+		return pelicula;
 	}
 	
 

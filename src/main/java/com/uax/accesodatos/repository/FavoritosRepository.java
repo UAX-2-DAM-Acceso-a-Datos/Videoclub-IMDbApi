@@ -19,7 +19,7 @@ public class FavoritosRepository implements FavoritoInterface {
 	public List<FavoritosDto> getFavoritos(String user) {
 		try {
 			//query obtener favoritos
-			String sql = String.format("Select peliculas.id from favoritos,users peliculas WHERE favoritos.username=users.username AND favoritos.id=peliculas.id AND users.username='%s'", user);
+			String sql = String.format("Select peliculas.id from favoritos,usuario,peliculas WHERE favoritos.username=usuario.username AND favoritos.id=peliculas.id AND usuario.username='%s'", user);
 			return jdbctemplate.query(sql, new FavoritosMapper());
 
 		} catch (Exception e) {
