@@ -37,6 +37,8 @@ public class PeliculasControllerREST {
 	@GetMapping("/peliculas")
 	public List<PeliculasDto> getAllPeliculas(){
 		
+		//localhost:8080/api/peliculas
+		
 		List<PeliculasDto> b = peliculasRepository.getAllPeliculas();
 	
 		return b;
@@ -73,6 +75,10 @@ public class PeliculasControllerREST {
 	@Operation(summary = "Obtiene las peliculas por Id")
 	@GetMapping("/peliculasbyId/id/{id}")
 	public PeliculasDto getPeliculasById(@PathVariable(name = "id")String id) {
+		
+		//localhost:8080/api/peliculasbyId/id/tt0439572
+		
+		
 	PeliculaService a=new PeliculaService();
 	
 		PeliculasDto pelicula=a.getResponseById(id);
