@@ -31,24 +31,13 @@ public class PeliculasRepository {
 	}
 	
 	
-public List<PeliculasDto> getFavoritosById(String nombre) {
+	public List<PeliculasDto> getFavoritosById(String nombre) {
 		
 		String query="SELECT * FROM usuario,peliculas,favoritos WHERE usuario.username=favoritos.username AND favoritos.id=peliculas.id AND usuario.username='" + nombre + "'";
 		return jdbcTemplate.query(query, new PeliculasRowMapper());
 		
 	}
 	
-
-public boolean getPeliculaById() {
-	
-
-		
-	
-	return true;
-	
-	
-}
-
 	public boolean savePeliculas(PeliculasDto peliculas) {
 		
 		try {
@@ -65,6 +54,7 @@ public boolean getPeliculaById() {
 		return true;
 		
 	}
+	
 	public List<PeliculasDto>getPeliculasId(String id ){
 		String sql = String.format("SELECT peliculas.id,titulo,plot,imagen,imDbRating,trailer,runtimeStr,pegi FROM peliculas,favoritos WHERE peliculas.id=favoritos.id and favoritos.username='%s'",id);
 		return jdbcTemplate.query(sql, new PeliculasRowMapper());
