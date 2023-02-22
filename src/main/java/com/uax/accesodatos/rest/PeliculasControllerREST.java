@@ -51,6 +51,8 @@ public class PeliculasControllerREST {
 	@GetMapping("/peliculasbyReservas/id/{id}")
 	public PeliculasDto getPeliculasFromReservas(@PathVariable(name = "id") String id){
 		
+		
+		
 		PeliculaService b= new PeliculaService();
 		PeliculasDto a= b.getResponseById(id);
 		
@@ -64,6 +66,9 @@ public class PeliculasControllerREST {
 	@Operation(summary = "Obtiene las peliculas de favoritos")
 	@GetMapping("/peliculasbyFavoritos/nombre/{nombre}")
 	public List<PeliculasDto> getPeliculasFromFavoritos(@PathVariable(name = "nombre") String nombre){
+		
+		//localhost:8080/api/peliculasbyFavoritos/nombre/carlos
+		
 		
 		List<PeliculasDto> b = peliculasRepository.getFavoritosById(nombre);
 		
