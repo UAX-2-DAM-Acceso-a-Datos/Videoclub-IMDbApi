@@ -6,13 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{./style/index.css}">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-         <link rel="stylesheet" th:href="@{./style/index.css}">
-    <title>Favoritos | IMDb</title>
-    <link rel="icon" href="../images/ImdbIcon.png" type="image/png">
-
+    <title>Inicio | IMDb</title>
 </head>
 
 <body class="bg-secondary">
@@ -26,7 +22,7 @@
         <hr>
         <ul class="nav nav-pills flex-column active mb-auto ">
             <li class="nav-item"> 
-                <a href="/" class="nav-link text-white"  aria-current="page">
+                <a href="/" class="nav-link text-black bg-warning border border-warning-subtle"  aria-current="page">
                     <svg class="bi me-2" width="16" height="16">
                         <use xlink:href="#home"></use>
                     </svg>
@@ -34,7 +30,7 @@
                 </a>
             </li>
             <li>
-                <a href="/Favoritos" class="nav-link text-black bg-warning border border-warning-subtle">
+                <a href="/Favoritos" class="nav-link text-white">
                     <svg class="bi me-2" width="16" height="16">
                         <use xlink:href="#speedometer2"></use>
                     </svg>
@@ -74,37 +70,46 @@
                 <strong th:text="${userName}"></strong>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                <li><a class="dropdown-item" href="/perfil">Perfil</a></li>
+                <li><a class="dropdown-item" href="#">New project...</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="/logout">Cerrar Sesion</a></li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
             </ul>
         </div>
     </div>
     </div>
     <!--  Fin del Navbar -->
     <!-- Contenido de la pagina -->
-   <div class="container-fluid">
+    <div class="container-fluid">
         <div class="row">
             <!-- espacio del navbar -->
             <div class="col-3">
             </div>
             <!--Contenido visible de la pagina-->
             <div   class="col-9 text-center">
-                <h1 class="text-white mt-5">Peliculas Favoritos</h1>
+                <h1 class="text-white mt-5">Peliculas Busqueda</h1>
+                <form method=GET action="/gotoBuscadorTitulo">
+		  <div class="mt-3 row justify-content-center">
+		  <div class="col-6 d-flex">
+		    	<input type="text" style="border-radius: 0 !important;" class="form-control border-end-0" name="titulo" aria-describedby="emailHelp">
+		  		<button type="submit" style="border-radius: 0 !important;" class="border-0 btn btn-warning bt-5">Buscar</button>
+		  </div>
+		  </div>
+		</form>
                 <div  class="container-fluid">
                     <div class="row pt-5">
                         <div th:each="pelicula : ${peliculas}" class="col-3 mt-5">
                             <div class="example-2 card">
-                                <div class="wrapper" th:style="'background: url('+${pelicula.imagen}+') center/cover no-repeat;'">
-                                    <div class="header">
-                                    </div>
+                                <div class="wrapper" th:style="'background: url('+${pelicula.image}+') center/cover no-repeat;'">
+                                    <div class="header">                                      
                                     <div class="data">
                                         <div class="content">
-                                        	<a th:text="${pelicula.titulo}"></a>
-                                        	 <a th:text="${pelicula.imDbRating}" class="button"></a>
-                                            <h3 th:text="${pelicula.pegi}" class="title"><a href="#"></a></h3	>
+                                        	<a th:text="${pelicula.title}"></a>
+                                        	 <a th:href="@{'/goToFavoritos?id='}+${pelicula.id}" class="button">Añadir a favoritos</a>
+                                            <h3 th:text="${pelicula.description}" class="title"><a href="#"></a></h3	>
                                             <a th:href="@{'/trailer?id='}+${pelicula.id}" class="button">Trailer</a>
                                         </div>
                                     </div>
@@ -126,8 +131,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-
 
 </body>
 
