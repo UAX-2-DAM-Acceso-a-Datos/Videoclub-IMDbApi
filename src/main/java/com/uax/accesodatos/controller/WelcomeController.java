@@ -34,7 +34,7 @@ public class WelcomeController {
 		ArrayList<RankingResponseDto> lista = serviciopelis.getmostPopular();
 		model.addAttribute("peliculas", lista);
 
-		return "index";
+		return "/views/index";
 	}
 
 }

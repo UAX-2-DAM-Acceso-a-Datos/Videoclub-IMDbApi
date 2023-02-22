@@ -52,21 +52,21 @@ public class VideoClubSecurity {
 		return new BCryptPasswordEncoder();
 	}
 
-	   public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-	         auth
-	         .authenticationProvider(authProvider)
-	         .userDetailsService(userDetailsService())
-	         .passwordEncoder(new BCryptPasswordEncoder());
-	    }
+   public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+         auth
+         .authenticationProvider(authProvider)
+         .userDetailsService(userDetailsService())
+         .passwordEncoder(new BCryptPasswordEncoder());
+    }
 	
 	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests()
-		.requestMatchers("/").authenticated()
 		.requestMatchers("/pantallaRegistro").permitAll()
-		.requestMatchers("/favoritos").authenticated()
+		.requestMatchers("/login").permitAll()
+		.anyRequest().authenticated()
 		.and().httpBasic()
 		.and().csrf().disable()
 		.formLogin()

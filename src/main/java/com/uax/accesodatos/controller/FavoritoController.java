@@ -17,24 +17,26 @@ public class FavoritoController {
 	private FavoritosRepository favrepository;
 	
 	@GetMapping("/goToFavoritos")
-	public String goToFavoritos(@RequestParam("id")String id ,Model model , HttpServletRequest hp ) {
+	public String goToFavoritos(@RequestParam("id")String id ,Model model , HttpServletRequest http ) {
 		
-		String username = hp.getUserPrincipal().getName();// Obtener el usuario
+		String username = http.getUserPrincipal().getName();// Obtener el usuario
 		String id_pelicula=id;
 		FavoritosDto fav = new FavoritosDto(username,id_pelicula);
 		favrepository.addFavorito(fav);
 		
+		model.addAttribute("userName", http.getUserPrincipal().getName());
+		
 		//Mostrar peliculas:
 		
-		return "favoritos";
+		return "/views/favoritos";
 	}
 	
 	
 	@GetMapping("/Favoritos")
-	public String goToFavoritos(Model model) {
+	public String goToFavoritos(Model model, HttpServletRequest http) {
+		model.addAttribute("userName", http.getUserPrincipal().getName());
 		
-		
-		return "favoritos";
+		return "/views/favoritos";
 	}
 	
 	
