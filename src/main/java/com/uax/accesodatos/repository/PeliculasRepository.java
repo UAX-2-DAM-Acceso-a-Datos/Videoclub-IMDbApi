@@ -1,7 +1,7 @@
 package com.uax.accesodatos.repository;
 
+import java.util.ArrayList;
 import java.util.List;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -37,6 +37,11 @@ public class PeliculasRepository {
 			return false;
 		}
 		return true;
+		
+	}
+	public List<PeliculasDto>getPeliculasId(String id ){
+		String sql = String.format("SELECT peliculas.id,titulo,plot,imagen,imDbRating,trailer,runtimeStr,pegi FROM peliculas,favoritos WHERE peliculas.id=favoritos.id and favoritos.username='%s'",id);
+		return jdbcTemplate.query(sql, new PeliculasRowMapper());
 		
 	}
 }

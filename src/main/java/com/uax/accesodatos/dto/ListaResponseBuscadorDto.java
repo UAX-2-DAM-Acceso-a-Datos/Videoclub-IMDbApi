@@ -7,14 +7,14 @@ public class ListaResponseBuscadorDto {
 	public String expression;
 	public String errorMessage;
 
-	public ArrayList<ResponseBuscadorDto> listaBuscador;
+	public ArrayList<ResponseBuscadorDto> results;
 
-	public ArrayList<ResponseBuscadorDto> getListaBuscador() {
-		return listaBuscador;
+	public ArrayList<ResponseBuscadorDto> getResults() {
+		return results;
 	}
 
-	public void setListaBuscador(ArrayList<ResponseBuscadorDto> listaBuscador) {
-		this.listaBuscador = listaBuscador;
+	public void setResults(ArrayList<ResponseBuscadorDto> listaBuscador) {
+		this.results = listaBuscador;
 	}
 
 	public String getSearchType() {
