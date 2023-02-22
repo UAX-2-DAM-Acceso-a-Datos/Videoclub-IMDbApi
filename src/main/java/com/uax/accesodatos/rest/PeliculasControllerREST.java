@@ -37,7 +37,7 @@ public class PeliculasControllerREST {
 	@GetMapping("/peliculas")
 	public List<PeliculasDto> getAllPeliculas(){
 		
-		//localhost:8080/api/peliculas
+		//   localhost:8080/api/peliculas
 		
 		List<PeliculasDto> b = peliculasRepository.getAllPeliculas();
 	
@@ -67,7 +67,7 @@ public class PeliculasControllerREST {
 	@GetMapping("/peliculasbyFavoritos/nombre/{nombre}")
 	public List<PeliculasDto> getPeliculasFromFavoritos(@PathVariable(name = "nombre") String nombre){
 		
-		//localhost:8080/api/peliculasbyFavoritos/nombre/carlos
+		//   localhost:8080/api/peliculasbyFavoritos/nombre/carlos
 		
 		
 		List<PeliculasDto> b = peliculasRepository.getFavoritosById(nombre);
@@ -81,7 +81,7 @@ public class PeliculasControllerREST {
 	@GetMapping("/peliculasbyId/id/{id}")
 	public PeliculasDto getPeliculasById(@PathVariable(name = "id")String id) {
 		
-		//localhost:8080/api/peliculasbyId/id/tt0439572
+		//   localhost:8080/api/peliculasbyId/id/tt0439572
 		
 		
 	PeliculaService a=new PeliculaService();
@@ -89,6 +89,7 @@ public class PeliculasControllerREST {
 		PeliculasDto pelicula=a.getResponseById(id);
 		
 		return pelicula;
+		
 		}
 	
 	
