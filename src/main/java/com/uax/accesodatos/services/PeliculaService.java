@@ -1,17 +1,14 @@
 package com.uax.accesodatos.services;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.google.gson.Gson;
-import com.uax.accesodatos.dto.ListaRankingResponseDto;
 import com.uax.accesodatos.dto.ListaResponseBuscadorDto;
 import com.uax.accesodatos.dto.PeliculasDto;
-import com.uax.accesodatos.dto.RankingResponseDto;
 import com.uax.accesodatos.dto.ResponseBuscadorDto;
 import com.uax.accesodatos.dto.peliculasresponsedto.PeliculasResponseDto;
 import com.uax.accesodatos.repository.PeliculasRepository;
@@ -25,8 +22,8 @@ public class PeliculaService {
 	TrailerService trailerService;
 	
 
-	private final String uricallPelicula = "https://imdb-api.com/en/API/SearchMovie/k_4yy73lat/";
-	String uricallTitulo="https://imdb-api.com/en/API/SearchTitle/k_k8y80mxd/";
+	private final String uricallPelicula = "https://imdb-api.com/en/API/SearchMovie/k_eep7i5b5/";
+	String uricallTitulo="https://imdb-api.com/en/API/SearchTitle/k_eep7i5b5/";
 	private RestTemplate resT = new RestTemplate(); // Objeto que permite hacer llamadas de API
 	private String result;
 
