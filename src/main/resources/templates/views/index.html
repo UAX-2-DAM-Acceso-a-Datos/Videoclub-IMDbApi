@@ -29,7 +29,7 @@
 			</div>
 			<nav class="main-nav">
 				<a href="#home">Home</a> <a href="/Favoritos">Favoritas</a> <a
-					href="/reserva">Reservas</a> <a href="/Gotobuscador"><i
+					href="/reserva">Reservas</a> <a href="/gotoBuscador"><i
 					class="fas fa-search sub-nav-logo me-2"></i> Buscador</a>
 
 			</nav>
@@ -60,7 +60,7 @@
 			<div class="location" id="home">
 				<h1 id="home" class="text-white">Most Popular on IMDB</h1>
 				<div class="box">
-					<div th:each="pelicula : ${peliculas2}" class="mt-5">
+					<div th:each="pelicula : ${peliculas}" class="mt-5">
 						<div class="example-2 card">
 							<div class="wrapper"
 								th:style="'background: url('+${pelicula.image}+') center/cover no-repeat;'">
