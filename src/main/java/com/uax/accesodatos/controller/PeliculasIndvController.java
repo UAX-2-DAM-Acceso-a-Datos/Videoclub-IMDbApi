@@ -10,7 +10,7 @@ public class PeliculasIndvController {
 	public String PeliculaIndv() {
 		
 		
-		return "/PeliculaIndv.html";
+		return "/views/PeliculaIndv.html";
 		
 	}
 }
