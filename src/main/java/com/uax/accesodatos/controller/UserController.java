@@ -24,16 +24,11 @@ public class UserController {
 
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
 	@PostMapping(value = "/registrarUsuario")
 	public String register(@RequestBody UsersDto myUser) {
 		List<GrantedAuthority> authorities = new ArrayList<>();
-		authorities.add(new SimpleGrantedAuthority(myUser.getRoles()));
-
-//		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-//		authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-//		Authentication authentication = new UsernamePasswordAuthenticationToken(myUser.getUserName(), myUser.getPassword(), authorities);
-//		SecurityContextHolder.getContext().setAuthentication(authentication);
-//		
+		authorities.add(new SimpleGrantedAuthority(myUser.getRoles()));	
 
 		String encodededPassword = bCryptPasswordEncoder.encode(myUser.getPassword());
 

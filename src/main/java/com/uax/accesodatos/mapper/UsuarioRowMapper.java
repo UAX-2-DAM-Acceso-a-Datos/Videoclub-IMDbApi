@@ -6,23 +6,22 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.uax.accesodatos.dto.UsersDto;
+import com.uax.accesodatos.dto.UsuarioDto;
 
-public class UsuarioRowMapper implements RowMapper<UsersDto>{
+public class UsuarioRowMapper  implements RowMapper<UsuarioDto>{
 
 	@Override
-	public UsersDto mapRow(ResultSet rs, int rowNum) throws SQLException {
-		//creacion del controller
-		UsersDto user = new UsersDto();
-		//Asignacion del atributo al objeto
-		user.setUserName(rs.getString(1));
-		//Asignacion del atributo al objeto
-		user.setPassword(rs.getString(2));
-		//Asignacion del atributo al objeto
-		user.setRoles(rs.getString(3));
+	public UsuarioDto mapRow(ResultSet rs, int rowNum) throws SQLException {
+
+		UsuarioDto usuario = new UsuarioDto();
+		usuario.setUsername(rs.getString(1));
+		usuario.setTlf(rs.getString(2));
+		usuario.setEmail(rs.getString(3));
+		usuario.setFecNac(rs.getDate(4));
 		
-		return user;
+		return usuario;
 	}
 	
-
 	
+
 }

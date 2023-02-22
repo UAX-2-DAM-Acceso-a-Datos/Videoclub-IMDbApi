@@ -21,12 +21,12 @@ public class BuscadorController {
 	public String gotoBuscadorTiulo(Model model, @RequestParam("titulo") String titulo) {
 		
 		model.addAttribute("peliculas",peliculaService.getpeliculaByTitulo(titulo));
-		return "buscador";
+		return "/views/buscador";
 		
 	}
 	@GetMapping("/gotoBuscador")
 	public String gotoBuscador() {
-		return "buscador";
+		return "/views/buscador";
 		
 	}
 
