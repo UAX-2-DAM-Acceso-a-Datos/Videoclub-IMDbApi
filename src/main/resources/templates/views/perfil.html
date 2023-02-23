@@ -1,114 +1,98 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" th:href="@{./favicon.ico}" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <title>Perfil</title>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Perfil</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+	crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{./style/index.css}">
+<link rel="stylesheet" th:href="@{./style/index2Css.css}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script defer
+	src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"
+	integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9"
+	crossorigin="anonymous"></script>
+
+<script src="main.js"></script>
 </head>
-<body class="bg-secondary">
-    <!-- Navbar -->
-    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark vh-100 fixed-top" style="width: 280px;">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-            <span class="fs-4">
-                <img th:src="@{./favicon.ico}" alt="">
-            </span>
-        </a>
-        <hr>
-        <ul class="nav nav-pills flex-column active mb-auto ">
-            <li class="nav-item"> 
-                <a href="/" class="nav-link text-white"  aria-current="page">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#home"></use>
-                    </svg>
-                    Inicio
-                </a>
-            </li>
-            <li>
-                <a href="/Favoritos" class="nav-link text-white">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#speedometer2"></use>
-                    </svg>
-                    Favoritos
-                </a>
-            </li>
-            <li>
-                <a href="/reserva" class="nav-link text-white">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#table"></use>
-                    </svg>
-                    Reservas
-                </a>
-            </li>
-            <li>
-                <a href="/goToPopulares" class="nav-link text-white">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#grid"></use>
-                    </svg>
-                    Populares
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link text-white">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#people-circle"></use>
-                    </svg>
-                    Customers
-                </a>
-            </li>
-        </ul>
-        <hr>
-        <div class="dropdown">
-            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                <strong th:text="${userName}"></strong>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                <li><a class="dropdown-item" href="/perfil">Perfil</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="/logout">Cerrar Sesion</a></li>
-            </ul>
-        </div>
-    </div>
-    </div>
-    <!--  Fin del Navbar -->
-    <div class="row m-0 p-0">
-        <div class="col-3"></div>
-        <!-- Formulario perfil -->
-        <div class="col-7 align-items-center d-flex vh-100">
-            <div class="bg-white w-100 rounded-2 p-3">
-                <form method="post" th:action="@{/perfil}" th:object="${usuario}">
-                    <div class="mb-3">
-                        <label for="inputUsuario" class="form-label">Usuario:</label>
-                        <input th:field="${usuario.username}" class="form-control" type="text" id="inputUsuario" name="username" aria-label="default input example" disabled readonly>
-                    </div>                    
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email:</label>
-                        <input th:field="${usuario.email}" type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
-                    </div>
-                    <div class="mb-3">
-                        <label for="inputTlf" class="form-label">Telefono:</label>
-                        <input th:field="${usuario.tlf}" type="text" class="form-control" name="tlf" id="inputTlf">
-                    </div>
-                    <div class="mb-3">
-                        <label for="inputNacimineto" class="form-label">Fecha Nacimiento:</label>
-                        <input th:text="'Fecha registrada: ' + ${#dates.format(usuario.fecNac, 'YYYY-MM-dd')}" type="date" class="form-control" id="inputNacimiento" name="fecNac">
-                    </div>
-                    <button type="submit" class="btn btn-warning">Guardar</button>
-                </form>
-            </div>
-        </div>
-        <div class="col-2"></div>
+<body class="bg-dark">
+	<div class="wrapper">
+
+		<!-- HEADER -->
+		<header>
+			<div class="netflixLogo">
+				<a id="logo" href="#home"><img
+					th:src="@{./images/logo.png}"
+					alt="Logo Image"></a>
+			</div>
+			<nav class="main-nav d-flex">
+				<a href="/">Home</a> <a href="/Favoritos">Favoritas</a> <a
+					href="/reserva">Reservas</a>
+				<form class="ms-1 form-inline d-flex"  method=GET action="/gotoBuscadorTitulo">
+					<input class="form-control mr-sm-2 bg-light" type="search" placeholder="" name="titulo" aria-describedby="emailHelp">
+					<button type="submit" class="btn btn-outline-danger d-flex">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+							<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+						</svg>
+							Buscar
+					</button>
+				</form>
+			</nav>
+			<nav class="sub-nav">
+				<div class="dropdown">
+		            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle text-white"
+		                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+		                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+		                <strong th:text="${userName}"></strong>
+		            </a>
+		            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+		                <li><a class="dropdown-item" href="/perfil">Perfil</a></li>
+		                <li>
+		                    <hr class="dropdown-divider">
+		                </li>
+		                <li><a class="dropdown-item" href="/logout">Cerrar Sesion</a></li>
+		            </ul>
+		        </div>
+			</nav>
+		</header>
+		<!-- END OF HEADER -->
+
+		<!-- MAIN CONTAINER -->
+		
+	    <div class="row m-0 p-0">
+	        <div class="col-2"></div>
+	        <!-- Formulario perfil -->
+	        <div class="col-8 align-items-center d-flex vh-100">
+	            <div class="bg-white w-100 rounded-2 p-3">
+	                <form method="post" th:action="@{/perfil}" th:object="${usuario}">
+	                    <div class="mb-3">
+	                        <label for="inputUsuario" class="form-label">Usuario:</label>
+	                        <input th:field="${usuario.username}" class="form-control" type="text" id="inputUsuario" name="username" aria-label="default input example" disabled readonly>
+	                    </div>                    
+	                    <div class="mb-3">
+	                        <label for="exampleInputEmail1" class="form-label">Email:</label>
+	                        <input th:field="${usuario.email}" type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
+	                    </div>
+	                    <div class="mb-3">
+	                        <label for="inputTlf" class="form-label">Telefono:</label>
+	                        <input th:field="${usuario.tlf}" type="text" class="form-control" name="tlf" id="inputTlf">
+	                    </div>
+	                    <div class="mb-3">
+	                        <label for="inputNacimineto" class="form-label">Fecha Nacimiento:</label>
+	                        <input th:text="'Fecha registrada: ' + ${#dates.format(usuario.fecNac, 'YYYY-MM-dd')}" type="date" class="form-control" id="inputNacimiento" name="fecNac">
+	                    </div>
+	                    <button type="submit" class="btn btn-danger">Guardar</button>
+	                </form>
+	            </div>
+	        </div>
+	        <div class="col-2"></div>
+	    </div>
     </div>
 
-    <!-- Links JS -->
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
@@ -119,5 +103,6 @@
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
 </body>
 </html>
