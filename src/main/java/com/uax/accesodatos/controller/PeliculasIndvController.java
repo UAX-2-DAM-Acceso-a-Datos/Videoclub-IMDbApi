@@ -16,7 +16,7 @@ public class PeliculasIndvController {
 	@GetMapping("/PeliculaIndv")
 	public String PeliculaIndv(Model model, @RequestParam("id") String id) {
 		
-		model.addAttribute("peliculas",peliculasservices.getResponseById(id));
+		model.addAttribute("peliculas",peliculasservices.getResponseResponseById(id));
 		
 		return "/views/PeliculaIndv.html";
 		

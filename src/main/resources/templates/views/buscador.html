@@ -11,10 +11,6 @@
 <link rel="stylesheet" th:href="@{./style/index.css}">
 <link rel="stylesheet" th:href="@{./style/index2Css.css}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script defer
-	src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"
-	integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9"
-	crossorigin="anonymous"></script>
 
 <script src="main.js"></script>
 </head>
@@ -72,13 +68,10 @@
 									<div class="menu-content">
 										<!-- Bookmark add to reserva -->
 										<a th:href="@{'/addReserva?id='}+${pelicula.id}"
-											class="fa fa-heart-o position-absolute top-0 end-25">
-											<span>
-												<img class="bookmark" th:src="@{./images/bookmark.png}">
-											</span>
+											class="fa fa-heart-o position-absolute top-0 end-25 w-100">
+											<img class="bookmark" th:src="@{./images/bookmark.png}">
 										</a>
 									</div>
-									
 								</div>
 								<div class="data">
 									<div class="content">
