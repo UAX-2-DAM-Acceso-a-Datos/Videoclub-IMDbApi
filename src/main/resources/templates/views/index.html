@@ -65,8 +65,12 @@
 				<div class="box">
 					<div th:each="pelicula : ${peliculas}" class="mt-5">
 						<div class="example-2 card">
+							
+							<a th:href="@{'/peliculaIndv?id='}+${pelicula.id}">
 							<div class="wrapper"
-								th:style="'background: url('+${pelicula.image}+') center/cover no-repeat;'">
+								th:style="'background: url('+${pelicula.image}+') center/cover no-repeat;'"
+								
+								>
 								<div class="header">
 									<div class="menu-content">
 										<!-- Bookmark add to reserva -->
@@ -87,12 +91,14 @@
 									</div>
 								</div>
 							</div>
+						
 						</div>
 						<h5 th:text="${pelicula.title}"
 							class="title mt-2 text-center text-white">
 							<a href="#"></a>
 						</h5>
 					</div>
+				</a>
 				</div>
 			</div>
 	</div>

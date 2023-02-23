@@ -53,7 +53,7 @@
 	</header>
 	<!-- END OF HEADER -->
 
-	<div class="Contenedor-General d-flex flex-row text-light mb-2">
+	<div class="Contenedor-General d-flex flex-row text-light mb-2"  h:object="pelicula : ${peliculas}">
 
 		<div class="Imagen mt-5 w-25 d-flex flex-column me-5">
 
@@ -63,7 +63,7 @@
 <!--Titulo,plot,imagen,rating,-->
 
 			<div class="ms-5">
-				<Img src="https://picsum.photos/seed/picsum/300/400" class="ms-5">
+				<Img src="${peliculas.imagen}" class="ms-5">
 	
  
 			</div>
@@ -75,42 +75,41 @@
 
 			<div class="plot d-flex flex-column" style="margin-top: 20%;">
 				<div>
-					<h3>Tarzan y su puñetera madre buscando piso en Alcobendas</h3>
+					<h3 th:text="${peliculas.titulo}"></h3>
 				</div>
 				<div class="d-flex flex-row mt-2">
-					<p>1957</p>
+					<p th:text="${peliculas.runtimeStr}"></p>
 					<div class="ms-3 me-2"></div>
-					<p>+13</p>
+					<p th:text="${peliculas.pegi}"></p>
 					<div class="ms-3 me-2"></div>
-					<p>3h y 40 min</p>
+					<p th:text="${peliculas.year}"></p>
 				</div>
-				<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur vel accusamus quaerat omnis dolorum cupiditate molestiae? Porro, magnam eligendi itaque, quisquam recusandae voluptatibus at eum possimus labore, iste similique? Deleniti!
+				<div th:text="${peliculas.plot}">
 
 				</div>
 				
 				<div></div>
+			</div>
+			<div class="mt-5">
+				<a th:href="${peliculas.trailer}"><button type="button" class="btn btn-danger">Trailer</button></a>
 			</div>
 
 		</div>
 
 
 	</div>
-<div class="mt-5">
+<!--<div class="mt-5">
 	<div class="d-flex flex-row">
 		<div class="w-25"><p> </p></div>
 		<iframe width="900" height="340" src="https://www.imdb.com/video/imdb/vi895599897/imdb/embed" title="YouTube video player" frameborder="0" allow="accelerometer;  clipboard-write;
 		encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 	</div>
-</div>
+</div>-->
+
+	
 
 
 
-	<!-- FOOTER -->
-	<footer>
-		<p>&copy 1997-2023 IMDB, Inc.</p>
-		<p>By Charly, Romero, H.White & Dickstra</p>
-	</footer>
-	</div>
 	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
 		integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"

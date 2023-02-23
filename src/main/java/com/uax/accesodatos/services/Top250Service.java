@@ -12,7 +12,7 @@ import com.uax.accesodatos.dto.RankingResponseDto;
 @Service
 public class Top250Service {
 
-	private final String uricallTop250 = "https://imdb-api.com/en/API/MostPopularMovies/k_4an5t72z";
+	private final String uricallTop250 = "https://imdb-api.com/en/API/MostPopularMovies/k_j8vsya70";
 	private RestTemplate resT = new RestTemplate(); // Objeto que permite hacer llamadas de API
 	private String result;
 

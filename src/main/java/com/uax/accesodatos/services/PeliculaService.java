@@ -25,8 +25,8 @@ public class PeliculaService {
 	TrailerService trailerService;
 	
 
-	private final String uricallPelicula = "https://imdb-api.com/en/API/SearchMovie/k_4an5t72z/";
-	String uricallTitulo="https://imdb-api.com/en/API/SearchTitle/k_4an5t72z/";
+	private final String uricallPelicula = "https://imdb-api.com/en/API/SearchMovie/k_j8vsya70/";
+	String uricallTitulo="https://imdb-api.com/en/API/SearchTitle/k_j8vsya70/";
 	private RestTemplate resT = new RestTemplate(); // Objeto que permite hacer llamadas de API
 	private String result;
 
@@ -52,7 +52,7 @@ public class PeliculaService {
 		PeliculasDto pelicula = new PeliculasDto();
 		
 		try {
-			String uricallById = "https://imdb-api.com/en/API/Title/k_4an5t72z/"+ id; // Uri para sacar todos los datos de una pelicula en concreto,
+			String uricallById = "https://imdb-api.com/en/API/Title/k_j8vsya70/"+ id; // Uri para sacar todos los datos de una pelicula en concreto,
 			
 			result = resT.getForObject(uricallById, String.class); // Resultado obtenido de la llamada api
 			PeliculasResponseDto peliculaResponse = gson.fromJson(result, PeliculasResponseDto.class); // Convierte el JSON en PeliculaResponseDto
