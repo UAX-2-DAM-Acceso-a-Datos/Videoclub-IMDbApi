@@ -9,7 +9,7 @@ import com.uax.accesodatos.dto.TrailerResponseDto;
 @Service
 public class TrailerService {
 	
-	private final String uricallTop250 = "https://imdb-api.com/en/API/Trailer/k_j8vsya70/";
+	private final String uricallTop250 = "https://imdb-api.com/en/API/Trailer/k_u5ruw4jp/";
 	private RestTemplate resT = new RestTemplate(); // Objeto que permite hacer llamadas de API
 	private String result;
 	

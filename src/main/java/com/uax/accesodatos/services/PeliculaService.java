@@ -53,7 +53,7 @@ public class PeliculaService {
 		PeliculasResponseDto peliculaResponse= null;
 		
 		try {
-			String uricallById = "https://imdb-api.com/en/API/Title/k_j8vsya70/"+ id; // Uri para sacar todos los datos de una pelicula en concreto,
+			String uricallById = "https://imdb-api.com/en/API/Title/k_u5ruw4jp/"+ id; // Uri para sacar todos los datos de una pelicula en concreto,
 			
 			result = resT.getForObject(uricallById, String.class); // Resultado obtenido de la llamada api
 			peliculaResponse = gson.fromJson(result, PeliculasResponseDto.class); // Convierte el JSON en PeliculaResponseDto
