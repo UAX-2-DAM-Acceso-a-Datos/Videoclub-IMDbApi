@@ -47,15 +47,16 @@ public class PeliculaService {
 	
 	
 	// Get pelicula by Id
-	public PeliculasDto getResponseById(String id) {
+	public PeliculasResponseDto getResponseById(String id) {
 		Gson gson = new Gson(); // Variable Gson para formatear de JSON a Object
 		PeliculasDto pelicula = new PeliculasDto();
+		PeliculasResponseDto peliculaResponse= null;
 		
 		try {
 			String uricallById = "https://imdb-api.com/en/API/Title/k_j8vsya70/"+ id; // Uri para sacar todos los datos de una pelicula en concreto,
 			
 			result = resT.getForObject(uricallById, String.class); // Resultado obtenido de la llamada api
-			PeliculasResponseDto peliculaResponse = gson.fromJson(result, PeliculasResponseDto.class); // Convierte el JSON en PeliculaResponseDto
+			peliculaResponse = gson.fromJson(result, PeliculasResponseDto.class); // Convierte el JSON en PeliculaResponseDto
 			
 			
 			// Pasar los datos de la respuesta al Objeto pelicula.
@@ -76,7 +77,7 @@ public class PeliculaService {
 
 		
 		
-		return pelicula;
+		return peliculaResponse;
 	}
 
 	public ArrayList<ResponseBuscadorDto> getpeliculaByTitulo(String titulo) {
