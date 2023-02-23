@@ -12,5 +12,5 @@ public class PeliculasIndvController {
 		
 		return "/views/PeliculaIndv.html";
 		
-	}
+	}//Esto no hay que meterlo en el index?????
 }
