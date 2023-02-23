@@ -29,11 +29,14 @@
 					th:src="@{./images/logo.png}"
 					alt="Logo Image"></a>
 			</div>
-			<nav class="main-nav">
-				<a href="#home">Home</a> <a href="/Favoritos">Favoritas</a> <a
-					href="/reserva">Reservas</a> <a href="/gotoBuscador"><i
-					class="fas fa-search sub-nav-logo me-2"></i> Buscador</a>
-				
+			<nav class="main-nav d-flex">
+				<a href="/">Home</a> <a href="/Favoritos">Favoritas</a> <a
+					href="/reserva">Reservas</a>
+				<form class="ms-1 form-inline d-flex"  method=GET action="/gotoBuscadorTitulo">
+				      <input class="form-control mr-sm-2 bg-light" type="search" placeholder="Search" name="titulo" aria-describedby="emailHelp">
+				      <button class="btn my-2 my-sm-0" type="submit"><i
+					class="fas fa-search sub-nav-logo me-2 text-danger"></i></button>
+				    </form>
 			</nav>
 			<nav class="sub-nav">
 				<div class="dropdown">

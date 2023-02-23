@@ -28,10 +28,14 @@
 					th:src="@{./images/logo.png}"
 					alt="Logo Image"></a>
 			</div>
-			<nav class="main-nav">
-				<a href="#home">Home</a> <a href="/Favoritos">Favoritas</a> <a
-					href="/reserva">Reservas</a> <a href="/gotoBuscador"><i
-					class="fas fa-search sub-nav-logo me-2"></i> Buscador</a>
+			<nav class="main-nav d-flex">
+				<a href="/">Home</a> <a href="/Favoritos">Favoritas</a> <a
+					href="/reserva">Reservas</a>
+				<form class="ms-1 form-inline d-flex"  method=GET action="/gotoBuscadorTitulo">
+				      <input class="form-control mr-sm-2 bg-light" type="search" placeholder="Search" name="titulo" aria-describedby="emailHelp">
+				      <button class="btn my-2 my-sm-0" type="submit"><i
+					class="fas fa-search sub-nav-logo me-2 text-danger"></i></button>
+				    </form>
 				
 			</nav>
 			<nav class="sub-nav">
@@ -65,11 +69,31 @@
 		  </div>
 		  </div>
 		</form>
-				<div class="box">
+					<div class="box">
 					<div th:each="pelicula : ${peliculas}" class="mt-5">
 						<div class="example-2 card">
 							<div class="wrapper"
 								th:style="'background: url('+${pelicula.image}+') center/cover no-repeat;'">
+								<div class="header">
+									<div class="menu-content">
+										<!-- Bookmark add to reserva -->
+										<a th:href="@{'/addReserva?id='}+${pelicula.id}"
+											class="fa fa-heart-o position-absolute top-0 end-25">
+											<span>
+												<img class="bookmark" th:src="@{./images/bookmark.png}">
+											</span>
+										</a>
+									</div>
+									
+								</div>
+								<div class="data">
+									<div class="content">
+										 <a
+											th:href="@{'/goToFavoritos?id='}+${pelicula.id}"
+											class="button"><h4>Añadir a favoritos</h4></a> <a
+											th:href="@{'/trailer?id='}+${pelicula.id}" class="button"><h5>Trailer</h5></a>
+									</div>
+								</div>
 							</div>
 						</div>
 						<h5 th:text="${pelicula.title}"
