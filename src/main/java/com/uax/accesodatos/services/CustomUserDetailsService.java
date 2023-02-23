@@ -41,7 +41,8 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
     
     public boolean registerUserDB(UsersDto usuario) {
-
+    	
+    	try {
 		List<GrantedAuthority> authorities = new ArrayList<>();
 		authorities.add(new SimpleGrantedAuthority(usuario.getRoles()));
 
@@ -50,6 +51,11 @@ public class CustomUserDetailsService implements UserDetailsService {
 		User user = new User(usuario.getUserName(), encodededPassword, authorities);
 
 		jdbcUserDetailManager.createUser(user);
+		
+    	}catch(Exception e) {
+    		e.getMessage();
+    		return false;
+    	}
 
 		return true;
 }
