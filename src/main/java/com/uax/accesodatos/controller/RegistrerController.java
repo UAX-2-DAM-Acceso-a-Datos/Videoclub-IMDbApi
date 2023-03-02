@@ -1,9 +1,13 @@
 package com.uax.accesodatos.controller;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.management.MBeanRegistrationException;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,14 +21,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.uax.accesodatos.dto.Mail;
 import com.uax.accesodatos.dto.UsersDto;
 import com.uax.accesodatos.repository.UsuarioRepository;
 import com.uax.accesodatos.services.CustomUserDetailsService;
+import com.uax.accesodatos.utils.PeliculasUtils;
+
+import jakarta.mail.MessagingException;
 @Controller
 
 public class RegistrerController {
 	@Autowired
 	private JdbcUserDetailsManager jdbcUserDetailsManager;
+	
+	@Autowired
+	private PeliculasUtils peliculaUtils;
 
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -40,7 +51,7 @@ public class RegistrerController {
 	}
 	
 	@PostMapping("/pantallaRegistro")
-	public String registrarUsuarioWeb(@ModelAttribute("usuario") UsersDto usuario) {
+	public String registrarUsuarioWeb(@ModelAttribute("usuario") UsersDto usuario) throws MessagingException {
 		
 		List<GrantedAuthority> authorities = new ArrayList<>();
 		
@@ -53,8 +64,21 @@ public class RegistrerController {
 		
 		boolean a =usuarioRepository.UserInUsuario(usuario.getUserName());
 		if (a) {
+			
+			Mail mail = new Mail();
+			mail.setTo("rafaeldijkstra@gmail.com");
+			mail.setFrom("siuwy@gmail.com");
+			mail.setAsunto("KLK");
+			Map<String,Object> propiedades = new HashMap<>();
+			propiedades.put("name",usuario.getUserName());
+			propiedades.put("subscriptionDate", LocalDate.now().toString());
+			
+			mail.setProps(propiedades);
+			peliculaUtils.formarMail(mail, "welcome-email");
+			
 			return "login";
 		}
+		
 		return"register";	
 	}
 }
