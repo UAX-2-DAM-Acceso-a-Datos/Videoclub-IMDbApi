@@ -6,9 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.management.MBeanRegistrationException;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,12 +17,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.uax.accesodatos.dto.Mail;
 import com.uax.accesodatos.dto.UsersDto;
 import com.uax.accesodatos.repository.UsuarioRepository;
 import com.uax.accesodatos.services.CustomUserDetailsService;
 import com.uax.accesodatos.utils.PeliculasUtils;
+import com.uax.accesodatos.utils.Tokenizer;
 
 import jakarta.mail.MessagingException;
 @Controller
@@ -39,9 +38,14 @@ public class RegistrerController {
 
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	@Autowired
+	private Tokenizer tokenizer;
+	
 	@Autowired
 	CustomUserDetailsService userService;
 	@Autowired
+	
 	UsuarioRepository usuarioRepository;
 	
 	@GetMapping("/pantallaRegistro")
@@ -51,7 +55,7 @@ public class RegistrerController {
 	}
 	
 	@PostMapping("/pantallaRegistro")
-	public String registrarUsuarioWeb(@ModelAttribute("usuario") UsersDto usuario) throws MessagingException {
+	public String registrarUsuarioWeb(@ModelAttribute("usuario") UsersDto usuario) throws Exception {
 		
 		List<GrantedAuthority> authorities = new ArrayList<>();
 		
@@ -62,23 +66,34 @@ public class RegistrerController {
 
 		userService.registerUserDB(usuario);
 		
-		boolean a =usuarioRepository.UserInUsuario(usuario.getUserName());
+		boolean a = usuarioRepository.UserInUsuario(usuario.getUserName());
+		// Formar Mail
+		Mail mail = new Mail();
+		mail.setTo("rafaeldijkstra@gmail.com");
+		mail.setFrom("siuwy@gmail.com");
+		mail.setAsunto("KLK");
+		Map<String,Object> propiedades = new HashMap<>();
+		propiedades.put("name",usuario.getUserName());
+		propiedades.put("subscriptionDate", LocalDate.now().toString());
+		propiedades.put("token", tokenizer.generateToken(usuario));
+		
+		mail.setProps(propiedades);
+		peliculaUtils.formarMail(mail, "welcome-email");
 		if (a) {
-			
-			Mail mail = new Mail();
-			mail.setTo("rafaeldijkstra@gmail.com");
-			mail.setFrom("siuwy@gmail.com");
-			mail.setAsunto("KLK");
-			Map<String,Object> propiedades = new HashMap<>();
-			propiedades.put("name",usuario.getUserName());
-			propiedades.put("subscriptionDate", LocalDate.now().toString());
-			
-			mail.setProps(propiedades);
-			peliculaUtils.formarMail(mail, "welcome-email");
 			
 			return "login";
 		}
 		
 		return"register";	
 	}
+	
+	@GetMapping("/validarCuenta")
+	public boolean validarCuenta(@RequestParam("token") String token) {
+		
+		
+		
+		System.out.println(token);
+		return true;
+	}
+	
 }

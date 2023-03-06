@@ -67,6 +67,7 @@ public class VideoClubSecurity {
 		.requestMatchers("/pantallaRegistro").permitAll()
 		.requestMatchers("/login").permitAll()
 		.requestMatchers("/api/**").permitAll()
+		.requestMatchers("/validarCuenta").permitAll()
 		.anyRequest().authenticated()
 		.and().httpBasic()
 		.and().csrf().disable()

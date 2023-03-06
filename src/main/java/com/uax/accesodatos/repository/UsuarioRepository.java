@@ -22,7 +22,7 @@ public class UsuarioRepository implements UsuarioInterface{
 		try {
 			//obtener user de security y su authority 
 			String sql = String.format("SELECT users.username, users.password, authorities.authority FROM users, authorities"
-					+" WHERE users.username=authorities.username and users.username='%s'", username);
+					+" WHERE users.username=authorities.username and users.username='%s' and users.enabled=1", username);
 			return jdbctemplate.queryForObject(sql, new UsersRowMapper());
 			
 		}catch(Exception e) {

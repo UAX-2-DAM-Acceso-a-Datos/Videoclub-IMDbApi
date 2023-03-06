@@ -48,7 +48,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 		String encodededPassword = bCryptPasswordEncoder.encode(usuario.getPassword());
 
-		User user = new User(usuario.getUserName(), encodededPassword, authorities);
+		User user = new User(usuario.getUserName(), encodededPassword, false, false, false, false, authorities);
 
 		jdbcUserDetailManager.createUser(user);
 		
