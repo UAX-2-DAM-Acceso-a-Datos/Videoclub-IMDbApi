@@ -1,4 +1,4 @@
-package com.uax.accesodatos.controller;
+/*package com.uax.accesodatos.controller;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -39,8 +39,8 @@ public class RegistrerController {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
-//	@Autowired
-	//private Tokenizer tokenizer;
+	@Autowired
+	private Tokenizer tokenizer;
 	
 	@Autowired
 	CustomUserDetailsService userService;
@@ -96,4 +96,4 @@ public class RegistrerController {
 		return true;
 	}
 	
-}
+}*/

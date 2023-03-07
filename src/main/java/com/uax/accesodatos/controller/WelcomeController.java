@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.uax.accesodatos.dto.RankingResponseDto;
+import com.uax.accesodatos.repository.PruebaImdbRepository;
 import com.uax.accesodatos.services.Top250Service;
 
 @Controller
@@ -17,6 +18,12 @@ public class WelcomeController {
 	@Autowired
 	private Top250Service serviciopelis;
 
+	//Prueba para saber si funciona
+	@Autowired
+	private PruebaImdbRepository pruebarepo;
+	
+	
+	
 	@GetMapping("/login")
 	public String gotologin(Model model) throws Exception {
 
