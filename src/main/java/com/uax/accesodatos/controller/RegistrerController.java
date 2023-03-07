@@ -39,8 +39,8 @@ public class RegistrerController {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
-	@Autowired
-	private Tokenizer tokenizer;
+//	@Autowired
+	//private Tokenizer tokenizer;
 	
 	@Autowired
 	CustomUserDetailsService userService;
